@@ -51,15 +51,21 @@ $GLOBALS['TL_FFL']['formcolend'] = 'FormColEnd';
 **/
 $GLOBALS['TL_SUBCL'] = array(
 	'yaml3' => array(
-		'label'		=> 'YAML 3 Standard',
-		'scclass' 	=> 'subcolumns',
-		'equalize' 	=> 'equalize',
-		'inside' 	=> true,
-		'gap' 		=> true,
-		'files' 	=> array(
+		'label'		=> 'YAML 3 Standard', // Label for the selectmenu
+		'scclass' 	=> 'subcolumns', // Class for the wrapping container
+		'equalize' 	=> 'equalize', // Is a equilize heights class included and what is it's name?
+		'inside' 	=> true, // Are inside containers used?
+		'gap' 		=> true, // A gap between the columns can be entered in backend
+		'files' 	=> array( // Enter the location of the css files
 			'css'		=> 'system/modules/subcolumns/html/yaml3/subcols.css',
 			'ie'		=> 'system/modules/subcolumns/html/yaml3/subcolsIEHacks.css'
-		),
+		), 
+		/*
+		 * Define the sets that can be used as an array.
+		 * Each array contains two or more arrays with the definition for the single columns.
+		 * The key is used as the label in the select menu.
+		 * Example: '50x50' => array(array([class(es) for the first column],[optional classes for the inside container]),array([class(es) for the second column],[optional classes for the inside container]))
+		 */
 		'sets'		=> array(
 			'20x20x20x20x20' => array(array('c20l','subcl'),array('c20l','subc'),array('c20l','subc'),array('c20l','subc'),array('c20r','subcr')),
 			'25x25x25x25' => array(array('c25l','subcl'),array('c25l','subc'),array('c25l','subc'),array('c25r','subcr')),
