@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/**
+ * "Yet Another Multicolumn Layout" - (X)HTML/CSS Framework
+ *
+ * (en) YAML core stylesheet
+ * (de) YAML Basis-Stylesheet
+ *
+ * Don't make any changes in this file!
+ * Your changes should be placed in any css-file in your own stylesheet folder.
+ *
+ * @copyright       Copyright 2005-2012, Dirk Jesse
+ * @license         CC-BY 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ *                  YAML-CDL (http://www.yaml.de/license.html)
+ * @link            http://www.yaml.de
+ * @package         yaml
+ * @version         v4.0.1
+ * @revision        $Revision: 726 $
+ * @lastmodified    $Date: 2012-03-03 12:21:50 +0100 (Sa, 03 Mrz 2012) $
+ */
+
+/**
+ * Contao Extension
+ * @copyright  Felix Pfeiffer : Neue Medien 2007 - 2012
+ * @author     Felix Pfeiffer <info@felixpfeiffer.com>
+ * @package    Subcolumns
+ */
+
+@media all {
+	/**
+	* (en) Preventing several css bugs by forcing "hasLayout"
+	* (de) Vermeidung verschiedenster Bugs durch Erzwingen von "hasLayout"
+	*
+	* @workaround
+	* @affected  IE 5.x/Win, IE6, IE7
+	* @css-for   IE 5.x/Win, IE6, IE7
+	* @valid     no
+	*/
+	
+	/* trigger hasLayout to force containing content */
+	.ym-gbox, .ym-gbox-left, .ym-gbox-right { height:1%; } 
+}
+
+@media screen, projection {
+
+	/* Fix for:"Linking to anchors in elements within the containing block" Problem in IE5.x & IE 6.0 */
+	.ym-grid { overflow:hidden; display:block; }
+	* html .ym-grid { overflow:visible; }
+
+	.ym-gl,
+	.ym-gr { display: inline; }
+
+	/* transform CSS tables back into floats */
+	.ym-equalize .ym-gl {
+		float:left; display:inline;
+		padding-bottom:32767px;
+		margin-bottom:-32767px;
+	}
+
+	.ym-equalize .ym-gr {
+		float:right; margin-left:-5px; display:inline;
+		padding-bottom:32767px;
+		margin-bottom:-32767px;
+	}
+
+	.no-ie-padding .ym-gl,
+	.no-ie-padding .ym-gr {
+		padding-bottom:0;
+		margin-bottom:0;
+	}
+	
+	/* avoid growing widths */
+	* html .ym-gbox,
+	* html .ym-gbox-left,
+	* html .ym-gbox-right { word-wrap:break-word; o\verflow:hidden; }
+}
+
+@media print {
+
+	/**
+	* (en) Avoid unneeded page breaks of .ym-col3 content in print layout and containing floats.
+	* (de) Vermeiden von unnötigen Seitenumbrüchen beim Ausdruck der Spalte .ym-col3 und Einschluss von Floats.
+	*
+	* @bugfix
+	* @affected  IE7
+	* @css-for   IE 5.x/Win, IE6, IE7
+	* @valid     yes
+	*/
+
+	.ym-gbox,
+	.ym-gbox-left,
+	.ym-gbox-right	{ height:1%; }
+}
