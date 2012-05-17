@@ -148,10 +148,9 @@ class FormColPart extends Widget
 			}
 		}
 		
-		$objTemplate->column = $container[$this->sc_sortid][0] . ' ' . $arrCounts[$this->fsc_sortid];
+		$objTemplate->column = $container[$this->sc_sortid][0] . ' ' . $arrCounts[$this->fsc_sortid] . (($this->fsc_sortid == count($container)-1) ? 'last' : '');
 		$objTemplate->inside = $container[$this->sc_sortid][1];
 		$objTemplate->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
-		$objTemplate->scclass = ($this->sc_equalize ? 'equalize ' : '') . 'subcolumns';
 
 		return $objTemplate->parse();
 	}
