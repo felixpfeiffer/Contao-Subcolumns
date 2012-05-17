@@ -142,12 +142,11 @@ class colsetPart extends Module
 				}
 			}
 		}
-		
-		#$container = unserialize($this->sc_container);
-		$this->Template->column = $container[$this->sc_sortid][0] . ' ' . $arrCounts[$this->fsc_sortid];
-		$this->Template->inside = $container[$this->sc_sortid][1];
-		$this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
-		$this->Template->scclass = ($this->sc_equalize ? 'equalize ' : '') . 'subcolumns';
+
+        $this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+		$this->Template->column = $container[$this->sc_sortid][0] . ' ' . $arrCounts[$this->fsc_sortid] . (($this->sc_sortid == count($container)-1) ? 'last' : '');
+		$this->Template->inside = $this->Template->useInside ? $container[$this->sc_sortid][1] : '';
+
 	}
 }
 
