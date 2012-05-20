@@ -1,17 +1,25 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * TYPOlight webCMS
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2012 Leo Feyer
  *
- * The TYPOlight webCMS is an accessible web content management system that 
- * specializes in accessibility and generates W3C-compliant HTML code. It 
- * provides a wide range of functionality to develop professional websites 
- * including a built-in search engine, form generator, file and user manager, 
- * CSS engine, multi-language support and many more. For more information and 
- * additional TYPOlight applications like the TYPOlight MVC Framework please 
- * visit the project website http://www.typolight.org.
+ * Formerly known as TYPOlight Open Source CMS.
  *
- * This is the data container array for table tl_content.
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
+ *
  *
  * PHP version 5
  * @copyright  Felix Pfeiffer : Neue Medien 2007 - 2012
@@ -585,10 +593,16 @@ class tl_content_sc extends tl_content
 	
 	public function scCopy($intId,DataContainer $dc)
 	{
-		
+		$dc->activeRecord = $this->Database->prepare("SELECT * FROM tl_content WHERE id=?")->execute($intId)->first();
+
+        if($dc->activeRecord->type != 'colsetStart' && $dc->activeRecord->type != 'colsetPart' && $dc->activeRecord->type != 'colsetEnd')
+        {
+            return;
+        }
+
 		if($this->Input->get('act') == 'copy')
 		{
-			if($objActiveRecord->type == 'colsetStart')
+			if($dc->activeRecord->type == 'colsetStart')
 			{
 				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
 							->set(array('sc_parent'=>'','sc_childs'=>''))
@@ -599,15 +613,8 @@ class tl_content_sc extends tl_content
 		if($this->Input->get('act') == 'copyAll')
 		{
 			
-			$objActiveRecord = $this->Database->prepare("SELECT * FROM tl_content WHERE id=?")->execute($intId);
-			
-			if($objActiveRecord->type != 'colsetStart' && $objActiveRecord->type != 'colsetPart' && $objActiveRecord->type != 'colsetEnd')
-			{	
-				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")->set(array('sc_name'=>''))->execute($intId);
-			}
-			
 			// Startelement mit aktuellen Daten besetzen und Session mit alten Daten füllen
-			if($objActiveRecord->type == 'colsetStart')
+			if($dc->activeRecord->type == 'colsetStart')
 			{
 				
 				$arrSession = array(
@@ -616,7 +623,8 @@ class tl_content_sc extends tl_content
 					'childs'	=> array()
 				);
 				
-				$this->Session->set('sc'.$objActiveRecord->sc_parent,$arrSession);
+				#$this->Session->set('sc'.$dc->activeRecord->sc_parent,$arrSession);
+                $GLOBALS['scglobal']['sc'.$dc->activeRecord->sc_parent] = $arrSession;
 				
 				$arrSet = array(
 					'sc_name'	=> 'colset.' . $intId,
@@ -628,10 +636,11 @@ class tl_content_sc extends tl_content
 											->execute($intId);
 			}
 			
-			if($objActiveRecord->type == 'colsetPart')
+			if($dc->activeRecord->type == 'colsetPart')
 			{
-				$arrSession = $this->Session->get('sc'.$objActiveRecord->sc_parent);
-				
+				//$arrSession = $this->Session->get('sc'.$dc->activeRecord->sc_parent);
+				$arrSession = $GLOBALS['scglobal']['sc'.$dc->activeRecord->sc_parent];
+
 				$intNewParent = $arrSession['parentId'];
 				$intCount = $arrSession['count'];
 				$arrChilds = $arrSession['childs'];
@@ -651,15 +660,17 @@ class tl_content_sc extends tl_content
 				$arrSession['count'] = ++$intCount;
 				$arrSession['childs'] = $arrChilds;
 				
-				$this->Session->set('sc'.$objActiveRecord->sc_parent,$arrSession);
-			
+				//$this->Session->set('sc'.$dc->activeRecord->sc_parent,$arrSession);
+                $GLOBALS['scglobal']['sc'.$dc->activeRecord->sc_parent] = $arrSession;
+
 			}
 			
-			if($objActiveRecord->type == 'colsetEnd')
+			if($dc->activeRecord->type == 'colsetEnd')
 			{
 				
-				$arrSession = $this->Session->get('sc'.$objActiveRecord->sc_parent);
-				
+				//$arrSession = $this->Session->get('sc'.$dc->activeRecord->sc_parent);
+				$arrSession = $GLOBALS['scglobal']['sc'.$dc->activeRecord->sc_parent];
+
 				$intNewParent = $arrSession['parentId'];
 				$intCount = $arrSession['count'];
 				$arrChilds = $arrSession['childs'];
@@ -679,7 +690,7 @@ class tl_content_sc extends tl_content
 					'sc_childs' => $arrChilds
 				);
 				
-				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
+				$this->Database->prepare("UPDATE tl_content %s WHERE sc_parent=?")
 											->set($arrSet)
 											->execute($intNewParent);
 				
