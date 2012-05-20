@@ -208,6 +208,11 @@ class tl_content_sc extends tl_content
 							'sc_gap' => $dc->activeRecord->sc_gap,
 							'sc_gapdefault' => $dc->activeRecord->sc_gapdefault
 							);
+
+            if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
+            {
+                $arrSet['do'] = $this->Input->get('do');
+            }
 			
 			for($i=1;$i<=$intColcount+1;$i++)
 			{
@@ -359,15 +364,17 @@ class tl_content_sc extends tl_content
 							'tstamp' => time(),
 							'sorting' => 0,
 							'sc_name' => '',
-							
 							'sc_type'=>$sc_type,
 							'sc_parent' => $dc->id,
 							'sc_sortid' => 0,
 							'sc_gap' => $dc->activeRecord->sc_gap,
 							'sc_gapdefault' => $dc->activeRecord->sc_gapdefault
 							);
-			
-			$intDiff;
+
+            if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
+            {
+                $arrSet['do'] = $this->Input->get('do');
+            }
 			
 			if($intDiff>0)
 			{
