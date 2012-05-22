@@ -160,7 +160,7 @@ class ModuleSubcolumns extends Module
 
         /* Add class "first" and "last" to the corresponding tables */
         $i=0;
-        $l= count($arrSet);s
+        $l= count($arrSet);
         foreach($arrSet as $k=>$v)
         {
             $arrSet[$k][0] = $v[0] . ($i++==0 ? ' first' : '') . ($i == $l ? ' last' : '');
