@@ -104,11 +104,12 @@ class colsetStart extends ContentElement
 		}
 		
 		#$container = unserialize($this->sc_container);
-		$this->Template->column = $container[0][0] . ' first';
-		$this->Template->inside = $container[0][1];
-		$this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
-		$this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
-		
+        $this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+        $this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
+		$this->Template->column = $container[0][0] . ' col_1' . ' first';
+		$this->Template->inside = $this->Template->useInside ? $container[0][1] : '';
+		$this->Template->scclass .=  ' colcount_' . count($container);
+
 	}
 }
 

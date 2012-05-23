@@ -143,8 +143,9 @@ class colsetPart extends Module
 			}
 		}
 
+        $this->Template->colID = $arrCounts[$this->sc_sortid];
         $this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
-		$this->Template->column = $container[$this->sc_sortid][0] . ' ' . $arrCounts[$this->fsc_sortid] . (($this->sc_sortid == count($container)-1) ? 'last' : '');
+		$this->Template->column = $container[$this->sc_sortid][0] . ' col_' . ($this->sc_sortid+1) . (($this->sc_sortid == count($container)-1) ? ' last' : '');
 		$this->Template->inside = $this->Template->useInside ? $container[$this->sc_sortid][1] : '';
 
 	}
