@@ -4,7 +4,7 @@
 
 <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
 <?php endif; ?>
-<div class="<?php echo $this->scclass; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="<?php echo $this->scclass; ?>">
 	<?php foreach($this->arrSet as $key=>$value): ?>
 	
 	<!-- <?php echo $key + 1 ?>. Column //-->
