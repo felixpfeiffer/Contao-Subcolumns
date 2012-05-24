@@ -163,13 +163,13 @@ class ModuleSubcolumns extends Module
         $l= count($arrSet);
         foreach($arrSet as $k=>$v)
         {
-            $arrSet[$k][0] = $v[0] . ($i++==0 ? ' first' : '') . ($i == $l ? ' last' : '');
+            $arrSet[$k][0] = $v[0] . ($i++==0 ? ' first' : '') . ' col_' . ($i) . ($i == $l ? ' last' : '');
         }
 
 		$this->Template->intCols = count($arrSet);
 		$this->Template->inside = $container[0][1];
 		$this->Template->arrSet = $arrSet;
-		$this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
+		$this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . $l;
 		$this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 		
 	}
