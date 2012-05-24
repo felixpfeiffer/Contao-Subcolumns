@@ -66,7 +66,7 @@ class FormColPart extends Widget
 		
 		if (TL_MODE == 'BE')
 		{
-			switch($this->sc_sortid)
+			switch($this->fsc_sortid)
 			{
 				case 1:
 					$colID = $GLOBALS['TL_LANG']['MSC']['sc_second'];
@@ -83,7 +83,7 @@ class FormColPart extends Widget
 			}
 			
 			$this->Template = new BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
+			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
 			return $objTemplate->parse();
 		}
 		
@@ -148,8 +148,8 @@ class FormColPart extends Widget
 			}
 		}
 		
-		$objTemplate->column = $container[$this->sc_sortid][0] . ' ' . $arrCounts[$this->fsc_sortid] . (($this->fsc_sortid == count($container)-1) ? 'last' : '');
-		$objTemplate->inside = $container[$this->sc_sortid][1];
+		$objTemplate->column = $container[$this->fsc_sortid][0] . ' col_' . ($this->fsc_sortid+1) . (($this->fsc_sortid == count($container)-1) ? ' last' : '');
+		$objTemplate->inside = $container[$this->fsc_sortid][1];
 		$objTemplate->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 
 		return $objTemplate->parse();

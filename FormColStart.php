@@ -66,7 +66,7 @@ class FormColStart extends Widget
 		if (TL_MODE == 'BE')
 		{
 			$this->Template = new BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+			$this->Template->wildcard = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 			
 			return $objTemplate->parse();
 		}
@@ -110,7 +110,7 @@ class FormColStart extends Widget
 		}
 		
 		#$container = unserialize($this->sc_container);
-		$objTemplate->column = $container[0][0] . ' first';
+		$objTemplate->column = $container[0][0] . ' col_1' . ' first';
 		$objTemplate->inside = $container[0][1];
 		$objTemplate->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 		$objTemplate->scclass = ($this->fsc_equalize ? 'equalize ' : '') . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
