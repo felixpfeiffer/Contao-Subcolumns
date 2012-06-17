@@ -471,7 +471,7 @@ class tl_content_sc extends tl_content
 			'guests' => $dc->activeRecord->guests
 		);
 		
-		$this->Database->prepare("UPDATE tl_content %s WHERE sorting > ? AND sorting <= ?")->set($arrSet)->execute($dc->activeRecord->sorting,$objEnd->sorting);
+		$this->Database->prepare("UPDATE tl_content %s WHERE pid=? AND sorting > ? AND sorting <= ?")->set($arrSet)->execute($dc->activeRecord->pid,$dc->activeRecord->sorting,$objEnd->sorting);
 		
 	
 	}
