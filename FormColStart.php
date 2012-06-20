@@ -65,8 +65,8 @@ class FormColStart extends Widget
 		
 		if (TL_MODE == 'BE')
 		{
-			$this->Template = new BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate->wildcard = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 			
 			return $objTemplate->parse();
 		}
