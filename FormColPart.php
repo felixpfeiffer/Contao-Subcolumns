@@ -82,8 +82,8 @@ class FormColPart extends Widget
 					break;
 			}
 			
-			$this->Template = new BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
+			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate->wildcard = '### COLUMNSET PART <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
 			return $objTemplate->parse();
 		}
 		
