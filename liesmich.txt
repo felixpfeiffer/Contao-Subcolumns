@@ -1,0 +1,102 @@
+*****************************************************
+*                                                   *
+*  Die TYPOlight YAML Subtemplates Erweiterung      *
+*  Autoren: TL: Felix Pfeiffer			    *
+*           YAML: Dirk Jesse		            *
+*  Lizenz: Creative Commons Attribution 2.0 Lizenz  *
+*					            *
+*****************************************************
+
+Inhalt:
+
+1. Was macht die Erweiterung
+2. Installation / Update
+3. Bedienung
+4. Lizenz
+5. Kontakt
+
+
+1. Was macht die Erweiterung
+
+Die Subcolumns-Erweiterung erm�glicht das einfache Einbinden von Spalten innerhalb eines Artikels.
+Diese k�nnen im Backend als Inhaltselement eingef�gt werden. Dabei erzeugt die Erweiterung mehrere Inhaltselemente,
+die die einzelnen Trenncontainer des Spaltensets anzeigen.
+Die Erweiterung basiert auf dem CSS-Code von YAML (Yet Another Multicolumn Layout - http://www.yaml.de) f�r Subtemplates
+und ist auf allen aktuellen Browsern lauff�hig.
+
+Windows
+ * Internet Explorer 5.01
+ * Internet Explorer 5.5
+ * Internet Explorer 6.0
+ * Internet Explorer 7.0
+
+Apple/Mac
+ * Safari 1.0.3+
+ * Camino 0.6+
+
+Linux
+ * Konqueror 3.3+
+ * Galeon 1.3+
+ * Epiphany 1.4.8+
+ * Lynx (Textbrowser)
+
+Betriebssytem �bergreifend
+ * Firefox 1.0+
+ * Mozilla Suite 1.7.1+
+ * SeaMonkey 1.0+
+ * Netscape 8.0+
+ * Opera 6+
+
+
+2. Installation / Update
+
+Um die Erweiterung zu installieren oder ein Update durchzuf�hren, einfach den Ordner "subcolumns" in den Modulorder der TYPOlight-Installation kopieren und das Install-Tool aufrufen.
+
+Da die Grundtechniken gleich geblieben sind, sollte es keine Probleme beim Update geben. Zur Sicherheit sollte allerdings vor dem Update ein Backup der Datenbank durchgef�hrt werden.
+
+
+3. Bedienung
+
+Ein Spaltenset wird als Inhaltselement in einem Artikel angelegt. Dabei w�hlt man die Aufteilung aus, in der die Spalten angelegt werden sollen, optional einen Namen f�r das Spaltenset (dieser wird ansonsten vom System vergeben), optional einen Abstand zwischen den Spalten (Standard ist 12px) und ggf. ID oder CSS-Klasse. Das System erzeugt nun automatisch mehrere Inhaltselemente, die die Trenner zwischen zwei Containern anzeigen. Inhalte f�r eine Spalte werden zwischen diesen Trennelementen eingef�gt.
+Der erzeugte Quellcode sieht dabei etwa so aus:
+
+<!-- Spaltenset Start //-->
+<div class="ce_colsetStart subcolumns">
+	<!-- first Column //-->
+	<div class="c38l first">
+		<div class="subcl" style="padding-right: 6px;">
+
+			Inhalte der ersten Spalte
+
+		</div>
+	</div>
+	<!--  second last Column //-->
+	<div class="mod_colsetPart c62r second last">
+		<div class="subcr" style="padding-left: 6px;">
+		
+			Inhalte der zweiten Spalte
+
+		</div>
+	</div>
+</div>
+<!-- Spaltenset End //-->
+
+Im Gegensatz zu den Versionen 0.x, werden ab Version 1.0 Spaltensets auch beim Kopieren von Artikeln und/oder Seiten korrekt neu angelegt.
+
+
+4. Lizenz
+
+Da diese Erweiterung Elemente aus dem robusten YAML-Framework (http://www.yaml.de) �bernimmt, ist die Erweiterung unter der Creative Commons Attribution 2.0 Lizenz (CC-A 2.0) (http://creativecommons.org/licenses/by/2.0/de/) erschienen. 
+Die Creative-Commons-Lizenz erlaubt grunds�tzlich sowohl den nicht-kommerziellen als auch den kommerziellen Einsatz des Frameworks unter der Bedingung, dass eine Namensnennung des Autors und die R�ckverlinkung zur YAML-Projekthomepage erfolgt. F�r diese Erweiterung gilt daher folgende Bedingung: 
+F�r die kostenfreie Nutzung des YAML-Frameworks (oder Teilen daraus) ist die R�ckverlinkung zur YAML-Homepage (http://www.yaml.de) in der Fu�zeile der Website oder im Impressum vorgeschrieben.
+Dies k�nnte z.B. so aussehen: "Das Website Layout verwendet Teile von YAML [link:http://www.yaml.de]"
+
+Auf der YAML-Homepage gibt es aber auch die M�glichkeit, durch den Kauf einer kommerziellen Lizenz diesen Zusatz zu entfernen.
+
+
+5. Kontakt
+
+Fragen, Anregungen oder Bugs bitte im TYPOLight-Forum posten.
+
+Sollten Ihnen Browserbugs auffallen, die in Zusammenhang mit den YAML-Komponenten auftreten, k�nnen Sie diese auch im YAML-Forum posten.
+

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/**
+ * "Yet Another Multicolumn Layout" - (X)HTML/CSS Framework
+ *
+ * (en) YAML core stylesheet
+ * (de) YAML Basis-Stylesheet
+ *
+ * Don't make any changes in this file!
+ * Your changes should be placed in any css-file in your own stylesheet folder.
+ *
+ * @copyright       Copyright 2005-2012, Dirk Jesse
+ * @license         CC-BY 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ *                  YAML-CDL (http://www.yaml.de/license.html)
+ * @link            http://www.yaml.de
+ * @package         yaml
+ * @version         v4.0.1
+ * @revision        $Revision: 726 $
+ * @lastmodified    $Date: 2012-03-03 12:21:50 +0100 (Sa, 03 Mrz 2012) $
+ */
+
+/**
+ * Contao Extension
+ * @copyright  Felix Pfeiffer : Neue Medien 2007 - 2012
+ * @author     Felix Pfeiffer <info@felixpfeiffer.com>
+ * @package    Subcolumns
+ */
+@media screen,projection{.ym-g30{width:30%}.ym-g35{width:35%}.ym-g38{width:38.2%}.ym-g45{width:45%}.ym-g55{width:55%}.ym-g65{width:65%}.ym-g70{width:70%}.ym-g85{width:85%}}

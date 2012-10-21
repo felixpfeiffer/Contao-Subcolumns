@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/**
+ * "Yet Another Multicolumn Layout" - (X)HTML/CSS Framework
+ *
+ * (en) YAML core stylesheet - structure-independent bugfixes of IE/Win CSS-bugs
+ * (de) YAML Basis-Stylesheet - Strukturunabhängige Bugfixes von CSS-Bugs des IE/Win
+ *
+ * Don't make any changes in this file!
+ * Your changes should be added to a separate patch-file.
+ *
+ * @copyright       Copyright 2005-2009, Dirk Jesse
+ * @license         CC-A 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ *                  YAML-C (http://www.yaml.de/en/license/license-conditions.html)
+ * @link            http://www.yaml.de
+ * @package         yaml
+ * @version         3.2
+ * @revision        $Revision:426 $
+ * @lastmodified    $Date:2009-10-21 21:12:11 +0200 (Mi, 21. Okt 2009) $
+ * @appdef yaml
+ */
+
+/**
+ * Contao Extension
+ * @copyright  Felix Pfeiffer : Neue Medien 2007 - 2012
+ * @author     Felix Pfeiffer <info@felixpfeiffer.com>
+ * @package    Subcolumns
+ */
+
+@media screen, projection
+{
+
+  /**
+   * (en) IE-Adjustments for content columns and subtemplates
+   * (de) IE-Anpassung für Spaltencontainer und Subtemplates
+   *
+   * Doubled Float-Margin Bug
+   * @see        http://positioniseverything.net/explorer/doubled-margin.html
+   *
+   * @bugfix
+   * @affected   IE 5.x/Win, IE6
+   * @css-for    IE 5.x/Win, IE6, IE7
+   * @valid      yes
+   */
+
+  .c15l, .c16l, .c30l, .c45l, .c55l, .c70l, .c85l,
+  .c15r, .c16r, .c30r, .c45r, .c55r, .c70r, .c85r { display:inline; }
+
+  /* transform CSS tables back into floats */
+  .equalize .c16l,.equalize .c15l,.equalize .c30l,.equalize .c45l,.equalize .c55l,.equalize .c70l,.equalize .c85l {
+    float:left; display:inline;
+    padding-bottom:32767px;
+    margin-bottom:-32767px;
+  }
+  .equalize .c15r,.equalize .c16r,.equalize .c30r,.equalize .c45r,.equalize .c55r,.equalize .c70r,.equalize .c85r {
+    float:right; margin-left:-5px; display:inline;
+    padding-bottom:32767px;
+    margin-bottom:-32767px;
+  }
+
+  .no-ie-padding .c15l,.no-ie-padding .c16l,.no-ie-padding .c30l,.no-ie-padding .c45l,.no-ie-padding .c55l,.no-ie-padding .c70l,.no-ie-padding .c85l,
+  .no-ie-padding .c15r,.no-ie-padding .c16r,.no-ie-padding .c30r,.no-ie-padding .c45r,.no-ie-padding .c55r,.no-ie-padding .c70r,.no-ie-padding .c85r {
+    padding-bottom:0;
+    margin-bottom:0;
+  }
+  
+}

@@ -1,0 +1,8 @@
+
+<!-- Spaltenset Start //-->
+<div class="<?php echo $this->class; ?> <?php echo $this->scclass; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+	<!-- first Column //-->
+	<div class="<?php echo $this->column; ?>">
+        <?php if($this->useInside): ?>
+        <div class="<?php echo $this->inside; ?>"<?php if($this->gap['right']): ?> style="padding-right:<?php echo $this->gap['right']; ?>;"<?php endif; ?>>
+        <?php endif ?>
