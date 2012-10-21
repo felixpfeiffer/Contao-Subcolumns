@@ -1,6 +1,6 @@
 <?php
 /**
- * TL_ROOT/system/modules/subcolumns/languages/cs/tl_settings.php 
+ * TL_ROOT/system/modules/subcolumns/languages/cs/modules.php 
  * 
  * Contao extension: subcolumns 2.0.0 rc1 
  * Czech translation file 
@@ -15,8 +15,7 @@
  * permanent text corrections which are update-safe. 
  */
  
-$GLOBALS['TL_LANG']['tl_settings']['subcolumns_altcss']['0'] = "Použít originální YAML soubory";
-$GLOBALS['TL_LANG']['tl_settings']['subcolumns_altcss']['1'] = "Pokud používáte YAML framework, měli byste zkontrolovat, jak subcolumns CE upravil css soubor, který drží pouze dodatečné šířky sloupců.";
-$GLOBALS['TL_LANG']['tl_settings']['subcolumns_legend'] = "Více sloupců - Nastavení";
+$GLOBALS['TL_LANG']['FMD']['subcolumns']['0'] = "Nastavit sloupce";
+$GLOBALS['TL_LANG']['FMD']['subcolumns']['1'] = "Nastavení je prováděno podobně jako rozložení stránky.";
  
 ?>

@@ -165,9 +165,7 @@ class tl_content_sc extends tl_content
 	
 	/**
 	 * Write the other Sets
-	 * @param mixed
 	 * @param object
-	 * @return string
 	 */
 	public function scUpdate(DC_Table $dc)
 	{
@@ -176,45 +174,38 @@ class tl_content_sc extends tl_content
 		
 		$strSet = $GLOBALS['TL_CONFIG']['subcolumns'] ? $GLOBALS['TL_CONFIG']['subcolumns'] : 'yaml3';
 		
-		$id = $dc->id;
-					
-		$sorting = $dc->activeRecord->sorting;
-		
 		$sc_type = $dc->activeRecord->sc_type;
-		
 
 		$arrColset = $GLOBALS['TL_SUBCL'][$strSet]['sets'][$sc_type];
 		
 		$arrChilds = $dc->activeRecord->sc_childs != "" ? unserialize($dc->activeRecord->sc_childs) : "";
 		
-		if($dc->activeRecord->sc_gapdefault == 1)
-		{
-			$gap_value = $dc->activeRecord->sc_gap != "" ? $dc->activeRecord->sc_gap : '12';
-		}
+		return $this->createColset($dc->activeRecord,$sc_type,$arrColset,$arrChilds);
 		
+	}
+	
+	private function createColset($objElement,$sc_type,$arrColset,$arrChilds='')
+	{
 		$intColcount = count($arrColset) - 2;
 		
-		
+		$this->log('ID= ' . $objElement->id, 'SpaltensetHilfe createColset()', TL_ACCESS);
 		
 		/* Neues Spaltenset anlegen */
-		if($arrChilds == '')
+		if($arrChilds=='')
 		{
-			
 			$arrChilds = array();
+			$this->moveRows($objElement->pid,$objElement->sorting,128 * ( count($arrColset) + 1 ));
 			
-			$this->moveRows($dc->activeRecord->pid,$dc->activeRecord->sorting,128 * ( count($arrColset) + 1 ));
-			
-			$arrSet = array('pid' => $dc->activeRecord->pid,
+			$arrSet = array('pid' => $objElement->pid,
 							'tstamp' => time(),
 							'sorting'=>0,
 							'type' => 'colsetPart',
-							'sc_name'=> '',
-							
+							'sc_name'=> '',		
 							'sc_type'=>$sc_type,
-							'sc_parent'=>$dc->activeRecord->id,
+							'sc_parent'=>$objElement->id,
 							'sc_sortid'=>0,
-							'sc_gap' => $dc->activeRecord->sc_gap,
-							'sc_gapdefault' => $dc->activeRecord->sc_gapdefault
+							'sc_gap' => $objElement->sc_gap,
+							'sc_gapdefault' => $objElement->sc_gapdefault
 							);
 
             if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
@@ -225,8 +216,8 @@ class tl_content_sc extends tl_content
 			for($i=1;$i<=$intColcount+1;$i++)
 			{
 				
-				$arrSet['sorting'] = $dc->activeRecord->sorting+($i+1)*64;
-				$arrSet['sc_name'] = $dc->activeRecord->sc_name.'-Part-'.($i);
+				$arrSet['sorting'] = $objElement->sorting+($i+1)*64;
+				$arrSet['sc_name'] = $objElement->sc_name.'-Part-'.($i);
 				$arrSet['sc_sortid'] = $i;
 				
 				$insertElement = $this->Database->prepare("INSERT INTO tl_content %s")
@@ -237,9 +228,9 @@ class tl_content_sc extends tl_content
 				$arrChilds[] = $insertElement;
 			}
 			
-			$arrSet['sorting'] = $dc->activeRecord->sorting+($i+1)*64;
+			$arrSet['sorting'] = $objElement->sorting+($i+1)*64;
 			$arrSet['type'] = 'colsetEnd';
-			$arrSet['sc_name'] = $dc->activeRecord->sc_name.'-End';
+			$arrSet['sc_name'] = $objElement->sc_name.'-End';
 			$arrSet['sc_sortid'] = $intColcount+2;
 			
 			$insertElement = $this->Database->prepare("INSERT INTO tl_content %s")
@@ -250,8 +241,8 @@ class tl_content_sc extends tl_content
 			$arrChilds[] = $insertElement;
 			
 			$insertElement = $this->Database->prepare("UPDATE tl_content %s WHERE id=?")
-											->set(array('sc_childs'=>$arrChilds,'sc_parent'=>$dc->activeRecord->id,))
-											->execute($dc->id);
+											->set(array('sc_childs'=>$arrChilds,'sc_parent'=>$objElement->id,))
+											->execute($objElement->id);
 			
 			return true;
 		
@@ -267,10 +258,10 @@ class tl_content_sc extends tl_content
 			{
 				$arrSet = array(
 								'sc_type'=>$sc_type,
-								'sc_gap' => $dc->activeRecord->sc_gap,
-								'sc_gapdefault' => $dc->activeRecord->sc_gapdefault,
+								'sc_gap' => $objElement->sc_gap,
+								'sc_gapdefault' => $objElement->sc_gapdefault,
 								'sc_sortid' => $i,
-								'sc_name' => $dc->activeRecord->sc_name.'-Part-'.($i++)
+								'sc_name' => $objElement->sc_name.'-Part-'.($i++)
 								
 				);
 				
@@ -281,9 +272,9 @@ class tl_content_sc extends tl_content
 			
 			$arrSet = array(
 							'sc_type'=>$sc_type,
-							'sc_gap' => $dc->activeRecord->sc_gap,
+							'sc_gap' => $objElement->sc_gap,
 							'sc_sortid' => $i,
-							'sc_name' => $dc->activeRecord->sc_name.'-End'
+							'sc_name' => $objElement->sc_name.'-End'
 			);
 			
 			$this->Database->prepare("UPDATE tl_content %s WHERE id=".$intLastElement)
@@ -312,13 +303,13 @@ class tl_content_sc extends tl_content
 			
 			$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
 											->set(array('sc_childs'=>$arrChilds))
-											->execute($dc->id);
+											->execute($objElement->id);
 			
 			/* Andere Daten im Colset anpassen - Spaltenabstand und SpaltenSet-Typ */
 			$arrSet = array(
 							'sc_type'=>$sc_type,
-							'sc_gap' => $dc->activeRecord->sc_gap,
-							'sc_gapdefault' => $dc->activeRecord->sc_gapdefault
+							'sc_gap' => $objElement->sc_gap,
+							'sc_gapdefault' => $objElement->sc_gapdefault
 							);
 			
 			foreach($arrChilds as $value)
@@ -333,7 +324,7 @@ class tl_content_sc extends tl_content
 			/*  Den Typ des letzten Elements auf End-ELement umsetzen und FSC-namen anpassen */
 			$intChildId = array_pop($arrChilds);
 			
-			$arrSet['sc_name'] = $dc->activeRecord->sc_name.'-End';
+			$arrSet['sc_name'] = $objElement->sc_name.'-End';
 			$arrSet['type'] = 'colsetEnd';
 			
 			$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
@@ -351,11 +342,11 @@ class tl_content_sc extends tl_content
 			
 			$objEnd = $this->Database->prepare("SELECT id,sorting,sc_sortid FROM tl_content WHERE id=?")->execute($arrChilds[count($arrChilds)-1]);
 			
-			$this->moveRows($dc->activeRecord->pid,$objEnd->sorting,64 * ( $intDiff) );
+			$this->moveRows($objElement->pid,$objEnd->sorting,64 * ( $intDiff) );
 			
 			/*  Den Typ des letzten Elements auf End-ELement umsetzen und SC-namen anpassen */
 			$intChildId	= count($arrChilds);
-			$arrSet['sc_name'] = $dc->activeRecord->sc_name.'-Part-'.($intChildId);
+			$arrSet['sc_name'] = $objElement->sc_name.'-Part-'.($intChildId);
 			$arrSet['type'] = 'colsetPart';
 			
 			$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
@@ -368,15 +359,15 @@ class tl_content_sc extends tl_content
 			$intSorting = $objEnd->sorting;
 			
 			$arrSet = array('type' => 'colsetPart',
-							'pid' => $dc->activeRecord->pid,
+							'pid' => $objElement->pid,
 							'tstamp' => time(),
 							'sorting' => 0,
 							'sc_name' => '',
 							'sc_type'=>$sc_type,
 							'sc_parent' => $dc->id,
 							'sc_sortid' => 0,
-							'sc_gap' => $dc->activeRecord->sc_gap,
-							'sc_gapdefault' => $dc->activeRecord->sc_gapdefault
+							'sc_gap' => $objElement->sc_gap,
+							'sc_gapdefault' => $objElement->sc_gapdefault
 							);
 
             if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
@@ -393,7 +384,7 @@ class tl_content_sc extends tl_content
 					++$intChildId;
 					++$intFscSortId;
 					$intSorting += 64;
-					$arrSet['sc_name'] = $dc->activeRecord->sc_name.'-Part-'.($intChildId);
+					$arrSet['sc_name'] = $objElement->sc_name.'-Part-'.($intChildId);
 					$arrSet['sc_sortid'] = $intFscSortId;
 					$arrSet['sorting'] = $intSorting;
 					
@@ -413,8 +404,8 @@ class tl_content_sc extends tl_content
 			/* Andere Daten im Colset anpassen - Spaltenabstand und SpaltenSet-Typ */
 			$arrData = array(
 							'sc_type'=>$sc_type,
-							'sc_gap' => $dc->activeRecord->sc_gap,
-							'sc_gapdefault' => $dc->activeRecord->sc_gapdefault
+							'sc_gap' => $objElement->sc_gap,
+							'sc_gapdefault' => $objElement->sc_gapdefault
 							);
 			
 			foreach($arrChilds as $value)
@@ -429,7 +420,7 @@ class tl_content_sc extends tl_content
 			/* Neues End-element erzeugen */
 			$arrSet['sorting'] = $intSorting + 64;
 			$arrSet['type'] = 'colsetEnd';
-			$arrSet['sc_name'] = $dc->activeRecord->sc_name.'-End';
+			$arrSet['sc_name'] = $objElement->sc_name.'-End';
 			$arrSet['sc_sortid'] = ++$intFscSortId;
 			
 			$insertElement = $this->Database->prepare("INSERT INTO tl_content %s")
@@ -442,15 +433,14 @@ class tl_content_sc extends tl_content
 			/* Kindelemente in Startelement schreiben */
 			$insertElement = $this->Database->prepare("UPDATE tl_content %s WHERE id=?")
 											->set(array('sc_childs'=>$arrChilds))
-											->execute($dc->id);
+											->execute($objElement->id);
 			
 			return true;
 			
 		}
-		
-		
-		
+	
 	}
+	
 	
 	/**
 	 * Write the other Sets
@@ -701,6 +691,47 @@ class tl_content_sc extends tl_content
 			
 			
 		}
+	}
+	
+	/**
+     * 
+     * HOOK: $GLOBALS['TL_HOOKS']['clipboardCopy']
+     * 
+     * @param integer $intId
+     * @param datacontainer $dc
+     * @param boolean $isGrouped
+     */
+    public function clipboardCopy($intId, DataContainer $dc, $isGrouped)
+    {
+        if(!$isGrouped)
+        {
+			$objActiveRecord = $this->Database
+                    ->prepare("SELECT * FROM tl_content WHERE id = ?")
+                    ->executeUncached($intId);
+			
+			if($objActiveRecord->type == 'colsetStart')
+			{
+				
+				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
+                            ->set(array('sc_childs'=>'','sc_parent'=>'','sc_name'=>'colset.'.$objActiveRecord->id))
+                            ->execute($intId);
+
+                $objContent = $this->Database
+                            ->prepare("Select * FROM tl_content WHERE id=?")
+                            ->execute($intId);
+				
+				$strSet = $GLOBALS['TL_CONFIG']['subcolumns'] ? $GLOBALS['TL_CONFIG']['subcolumns'] : 'yaml3';
+			
+				$sc_type = $objContent->sc_type;
+
+				$arrColset = $GLOBALS['TL_SUBCL'][$strSet]['sets'][$sc_type];
+				
+				$this->log('Values: sc-Type='.$sc_type . ' Values: sc-Colset-Count='.count($arrColset), 'SpaltensetHilfe clipboardCopy()', TL_ACCESS);
+		
+				$this->createColset($objContent,$sc_type,$arrColset);
+			}
+		}
+		
 	}
 }
 ?>

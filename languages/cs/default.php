@@ -2,10 +2,10 @@
 /**
  * TL_ROOT/system/modules/subcolumns/languages/cs/default.php 
  * 
- * Contao extension: subcolumns 1.2.1 stable 
+ * Contao extension: subcolumns 2.0.0 rc1 
  * Czech translation file 
  * 
- * Copyright : 2008-2009 Felix Pfeiffer : Neue Medien, 2005-2009 Dirk Jesse www.yaml.de 
+ * Copyright : 2008-2012 Felix Pfeiffer : Neue Medien, 2005-2012 Dirk Jesse www.yaml.de 
  * License   : CC-A 2.0 
  * Author    : Felix Pfeiffer (felixpfeiffer), http://www.felixpfeiffer.de 
  * Translator: Tomas Petrlik (frogzone), www.frogzone.cz 

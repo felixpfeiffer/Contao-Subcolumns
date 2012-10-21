@@ -18,11 +18,11 @@ Inhalt:
 
 1. Was macht die Erweiterung
 
-Die Subcolumns-Erweiterung ermöglicht das einfache Einbinden von Spalten innerhalb eines Artikels.
-Diese können im Backend als Inhaltselement eingefügt werden. Dabei erzeugt die Erweiterung mehrere Inhaltselemente,
+Die Subcolumns-Erweiterung ermï¿½glicht das einfache Einbinden von Spalten innerhalb eines Artikels.
+Diese kï¿½nnen im Backend als Inhaltselement eingefï¿½gt werden. Dabei erzeugt die Erweiterung mehrere Inhaltselemente,
 die die einzelnen Trenncontainer des Spaltensets anzeigen.
-Die Erweiterung basiert auf dem CSS-Code von YAML (Yet Another Multicolumn Layout - http://www.yaml.de) für Subtemplates
-und ist auf allen aktuellen Browsern lauffähig.
+Die Erweiterung basiert auf dem CSS-Code von YAML (Yet Another Multicolumn Layout - http://www.yaml.de) fï¿½r Subtemplates
+und ist auf allen aktuellen Browsern lauffï¿½hig.
 
 Windows
  * Internet Explorer 5.01
@@ -40,7 +40,7 @@ Linux
  * Epiphany 1.4.8+
  * Lynx (Textbrowser)
 
-Betriebssytem übergreifend
+Betriebssytem ï¿½bergreifend
  * Firefox 1.0+
  * Mozilla Suite 1.7.1+
  * SeaMonkey 1.0+
@@ -50,14 +50,14 @@ Betriebssytem übergreifend
 
 2. Installation / Update
 
-Um die Erweiterung zu installieren oder ein Update durchzuführen, einfach den Ordner "subcolumns" in den Modulorder der TYPOlight-Installation kopieren und das Install-Tool aufrufen.
+Um die Erweiterung zu installieren oder ein Update durchzufï¿½hren, einfach den Ordner "subcolumns" in den Modulorder der TYPOlight-Installation kopieren und das Install-Tool aufrufen.
 
-Da die Grundtechniken gleich geblieben sind, sollte es keine Probleme beim Update geben. Zur Sicherheit sollte allerdings vor dem Update ein Backup der Datenbank durchgeführt werden.
+Da die Grundtechniken gleich geblieben sind, sollte es keine Probleme beim Update geben. Zur Sicherheit sollte allerdings vor dem Update ein Backup der Datenbank durchgefï¿½hrt werden.
 
 
 3. Bedienung
 
-Ein Spaltenset wird als Inhaltselement in einem Artikel angelegt. Dabei wählt man die Aufteilung aus, in der die Spalten angelegt werden sollen, optional einen Namen für das Spaltenset (dieser wird ansonsten vom System vergeben), optional einen Abstand zwischen den Spalten (Standard ist 12px) und ggf. ID oder CSS-Klasse. Das System erzeugt nun automatisch mehrere Inhaltselemente, die die Trenner zwischen zwei Containern anzeigen. Inhalte für eine Spalte werden zwischen diesen Trennelementen eingefügt.
+Ein Spaltenset wird als Inhaltselement in einem Artikel angelegt. Dabei wï¿½hlt man die Aufteilung aus, in der die Spalten angelegt werden sollen, optional einen Namen fï¿½r das Spaltenset (dieser wird ansonsten vom System vergeben), optional einen Abstand zwischen den Spalten (Standard ist 12px) und ggf. ID oder CSS-Klasse. Das System erzeugt nun automatisch mehrere Inhaltselemente, die die Trenner zwischen zwei Containern anzeigen. Inhalte fï¿½r eine Spalte werden zwischen diesen Trennelementen eingefï¿½gt.
 Der erzeugte Quellcode sieht dabei etwa so aus:
 
 <!-- Spaltenset Start //-->
@@ -86,17 +86,17 @@ Im Gegensatz zu den Versionen 0.x, werden ab Version 1.0 Spaltensets auch beim K
 
 4. Lizenz
 
-Da diese Erweiterung Elemente aus dem robusten YAML-Framework (http://www.yaml.de) übernimmt, ist die Erweiterung unter der Creative Commons Attribution 2.0 Lizenz (CC-A 2.0) (http://creativecommons.org/licenses/by/2.0/de/) erschienen. 
-Die Creative-Commons-Lizenz erlaubt grundsätzlich sowohl den nicht-kommerziellen als auch den kommerziellen Einsatz des Frameworks unter der Bedingung, dass eine Namensnennung des Autors und die Rückverlinkung zur YAML-Projekthomepage erfolgt. Für diese Erweiterung gilt daher folgende Bedingung: 
-Für die kostenfreie Nutzung des YAML-Frameworks (oder Teilen daraus) ist die Rückverlinkung zur YAML-Homepage (http://www.yaml.de) in der Fußzeile der Website oder im Impressum vorgeschrieben.
-Dies könnte z.B. so aussehen: "Das Website Layout verwendet Teile von YAML [link:http://www.yaml.de]"
+Da diese Erweiterung Elemente aus dem robusten YAML-Framework (http://www.yaml.de) ï¿½bernimmt, ist die Erweiterung unter der Creative Commons Attribution 2.0 Lizenz (CC-A 2.0) (http://creativecommons.org/licenses/by/2.0/de/) erschienen. 
+Die Creative-Commons-Lizenz erlaubt grundsï¿½tzlich sowohl den nicht-kommerziellen als auch den kommerziellen Einsatz des Frameworks unter der Bedingung, dass eine Namensnennung des Autors und die Rï¿½ckverlinkung zur YAML-Projekthomepage erfolgt. Fï¿½r diese Erweiterung gilt daher folgende Bedingung: 
+Fï¿½r die kostenfreie Nutzung des YAML-Frameworks (oder Teilen daraus) ist die Rï¿½ckverlinkung zur YAML-Homepage (http://www.yaml.de) in der Fuï¿½zeile der Website oder im Impressum vorgeschrieben.
+Dies kï¿½nnte z.B. so aussehen: "Das Website Layout verwendet Teile von YAML [link:http://www.yaml.de]"
 
-Auf der YAML-Homepage gibt es aber auch die Möglichkeit, durch den Kauf einer kommerziellen Lizenz diesen Zusatz zu entfernen.
+Auf der YAML-Homepage gibt es aber auch die Mï¿½glichkeit, durch den Kauf einer kommerziellen Lizenz diesen Zusatz zu entfernen.
 
 
 5. Kontakt
 
 Fragen, Anregungen oder Bugs bitte im TYPOLight-Forum posten.
 
-Sollten Ihnen Browserbugs auffallen, die in Zusammenhang mit den YAML-Komponenten auftreten, können Sie diese auch im YAML-Forum posten.
+Sollten Ihnen Browserbugs auffallen, die in Zusammenhang mit den YAML-Komponenten auftreten, kï¿½nnen Sie diese auch im YAML-Forum posten.
 

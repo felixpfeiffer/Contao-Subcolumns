@@ -47,6 +47,14 @@ $GLOBALS['TL_FFL']['formcolpart'] = 'FormColPart';
 $GLOBALS['TL_FFL']['formcolend'] = 'FormColEnd';
 
 /**
+ * Hooks
+ */
+#$GLOBALS['TL_HOOKS']['clipboardContentTitle'][] = array('SemanticHTML5Helper', 'clipboardContentTitle');
+$GLOBALS['TL_HOOKS']['clipboardCopy'][] = array('tl_content_sc', 'clipboardCopy');
+$GLOBALS['TL_HOOKS']['clipboardCopyAll'][] = array('tl_subcolumnsCallback', 'clipboardCopyAll');
+
+
+/**
  * Spaltensets
 **/
 $GLOBALS['TL_SUBCL'] = array(

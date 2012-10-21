@@ -90,6 +90,34 @@ class tl_subcolumnsCallback extends Backend
 		
 	}
 	
+	/**
+     * 
+     * HOOK: $GLOBALS['TL_HOOKS']['clipboardCopyAll']
+     * 
+     * @param array $arrIds
+     */
+    public function clipboardCopyAll($arrIds)
+    {
+        $arrIds = array_keys(array_flip($arrIds));
+		
+		$objDb = $this->Database->execute("SELECT DISTINCT pid FROM tl_content WHERE id IN (".implode(',',$arrIds).")");
+		
+		if($objDb->numRows > 0)
+		{
+			while($objDb->next())
+			{
+				$this->copyCheck($objDb->pid);
+			}
+		}
+		
+    }
+	
+	
+	/**
+     * Copy a colset
+     * 
+     * @param integer $pid
+     */
 	public function copyCheck($pid)
 	{
 			
