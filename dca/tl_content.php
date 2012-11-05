@@ -364,7 +364,7 @@ class tl_content_sc extends tl_content
 							'sorting' => 0,
 							'sc_name' => '',
 							'sc_type'=>$sc_type,
-							'sc_parent' => $dc->id,
+							'sc_parent' => $objElement->id,
 							'sc_sortid' => 0,
 							'sc_gap' => $objElement->sc_gap,
 							'sc_gapdefault' => $objElement->sc_gapdefault
@@ -680,10 +680,10 @@ class tl_content_sc extends tl_content
 					'sc_childs' => $arrChilds
 				);
 				
-				$this->Database->prepare("UPDATE tl_content %s WHERE sc_parent=?")
+				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
 											->set($arrSet)
 											->execute($intNewParent);
-				
+
 				
 			
 			}
