@@ -1,6 +1,6 @@
 <?php
 /**
- * TL_ROOT/system/modules/subcolumns/languages/cs/modules.php 
+ * TL_ROOT/system/modules/Subcolumns/languages/cs/modules.php 
  * 
  * Contao extension: subcolumns 2.0.0 rc1 
  * Czech translation file 

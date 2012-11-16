@@ -1,6 +1,6 @@
 <?php
 /**
- * TL_ROOT/system/modules/subcolumns/languages/ru/default.php 
+ * TL_ROOT/system/modules/Subcolumns/languages/ru/default.php 
  * 
  * TYPOlight extension: subcolumns 1.1.1 stable 
  * Russian translation file 
@@ -17,14 +17,14 @@
  
 $GLOBALS['TL_LANG']['CTE']['subcolumn'] = "Набор колонок";
 $GLOBALS['TL_LANG']['CTE']['subcolumns']['0'] = "Набор колонок";
-$GLOBALS['TL_LANG']['CTE']['subcolumns']['1'] = "<img src=\"system/modules/subcolumns/html/example_de.png\" alt=\"Пример набора колонок\" style=\"float:right;\" />Набор колонок позволяет легко добавить колоноки в формат сайта. Они могут быть даже каскадными.";
+$GLOBALS['TL_LANG']['CTE']['subcolumns']['1'] = "<img src=\"system/modules/Subcolumns/assets/example_de.png\" alt=\"Пример набора колонок\" style=\"float:right;\" />Набор колонок позволяет легко добавить колоноки в формат сайта. Они могут быть даже каскадными.";
 $GLOBALS['TL_LANG']['CTE']['colsetStart']['0'] = "Набор колонок - начальный элемент";
 $GLOBALS['TL_LANG']['CTE']['colsetStart']['1'] = "Начальный элемент набора колонок.<br />Если вы измените число столбцов или ширину, эти варианты будут автоматически добавлены другие элементы, связанные с этим набором колонок.<br />Если вы измените число столбцов - от двух до трех - элемент будет добавлен во вторую часть . При переходе с трех до двух колонок, последний элемент будет стираться, а содержимое третьей колонки будет отображаться под набором колонок.";
 $GLOBALS['TL_LANG']['CTE']['colsetPart']['0'] = "Набор колонок - промежуточный элемент";
 $GLOBALS['TL_LANG']['CTE']['colsetPart']['1'] = "Вы не можете изменить настройки этого элемента.<br /> ВАЖНО: ЕСЛИ ВЫ УДАЛИТЕ ЭТОТ ЭЛЕМЕНТ, ВСЕ ДРУГИЕ, СВЯЗАННЫЕ С НИМ ЭЛЕМЕНТЫ БУДУТ ТАКЖЕ УДАЛЕНЫ!!";
 $GLOBALS['TL_LANG']['CTE']['colsetEnd']['0'] = "Набор колонок - конечный элемент";
 $GLOBALS['TL_LANG']['CTE']['colsetEnd']['1'] = "Вы не можете изменить настройки этого элемента.<br /> ВАЖНО: ЕСЛИ ВЫ УДАЛИТЕ ЭТОТ ЭЛЕМЕНТ, ВСЕ ДРУГИЕ, СВЯЗАННЫЕ С НИМ ЭЛЕМЕНТЫ БУДУТ ТАКЖЕ УДАЛЕНЫ!!";
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = "<img src=\"system/modules/subcolumns/html/down.gif\" alt=\"Пример набора колонок\" style=\"float:left;\" />Поместите весь контент для %s колонки после этого элемента.";
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = "<img src=\"system/modules/Subcolumns/assets/down.gif\" alt=\"Пример набора колонок\" style=\"float:left;\" />Поместите весь контент для %s колонки после этого элемента.";
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = "первый";
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = "второй";
 $GLOBALS['TL_LANG']['MSC']['sc_third'] = "третий";

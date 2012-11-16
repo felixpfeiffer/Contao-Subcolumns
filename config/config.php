@@ -65,8 +65,8 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' 	=> true, // Are inside containers used?
 		'gap' 		=> true, // A gap between the columns can be entered in backend
 		'files' 	=> array( // Enter the location of the css files
-			'css'		=> 'system/modules/subcolumns/html/yaml3/subcols.css',
-			'ie'		=> 'system/modules/subcolumns/html/yaml3/subcolsIEHacks.css'
+			'css'		=> 'system/modules/Subcolumns/assets/yaml3/subcols.css',
+			'ie'		=> 'system/modules/Subcolumns/assets/yaml3/subcolsIEHacks.css'
 		), 
 		/*
 		 * Define the sets that can be used as an array.
@@ -114,8 +114,8 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' 	=> true,
 		'gap' 		=> true,
 		'files' 	=> array(
-			'css'		=> 'system/modules/subcolumns/html/yaml3/subcols_extended.css',
-			'ie'		=> 'system/modules/subcolumns/html/yaml3/subcolsIEHacks_extended.css'
+			'css'		=> 'system/modules/Subcolumns/assets/yaml3/subcols_extended.css',
+			'ie'		=> 'system/modules/Subcolumns/assets/yaml3/subcolsIEHacks_extended.css'
 		),
 		'sets'		=> array(
 			'20x20x20x20x20' => array(array('c20l','subcl'),array('c20l','subc'),array('c20l','subc'),array('c20l','subc'),array('c20r','subcr')),
@@ -157,8 +157,8 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' => true,
 		'gap' => true,
 		'files' => array(
-			'css'		=> 'system/modules/subcolumns/html/yaml4/subcols.css',
-			'ie'		=> 'system/modules/subcolumns/html/yaml4/subcolsIEHacks.css'
+			'css'		=> 'system/modules/Subcolumns/assets/yaml4/subcols.css',
+			'ie'		=> 'system/modules/Subcolumns/assets/yaml4/subcolsIEHacks.css'
 		),
 		'sets'=> array(
 			'20x20x20x20x20' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gr','ym-gbox')),
@@ -197,7 +197,7 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' => true,
 		'gap' => true,
 		'files' => array(
-			'css'		=> 'system/modules/subcolumns/html/yaml4/subcols_extended.css'
+			'css'		=> 'system/modules/Subcolumns/assets/yaml4/subcols_extended.css'
 		),
 		'sets'=> array(
 			'20x20x20x20x20' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gr','ym-gbox')),

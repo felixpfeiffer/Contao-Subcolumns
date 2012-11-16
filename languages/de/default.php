@@ -26,12 +26,12 @@
  * Miscellaneous
  */
 $GLOBALS['TL_LANG']['CTE']['subcolumn'] = 'Spaltenset';
-$GLOBALS['TL_LANG']['CTE']['subcolumns'] = array('Spaltenset','<img src="system/modules/subcolumns/html/example_de.png" alt="Beispiel für Spaltensets" style="float:right;" />Spaltensets ermöglichen es mehrere Spalten in das Layout einzufügen. Diese können dabei auch ineinander verschachtelt sein.');
+$GLOBALS['TL_LANG']['CTE']['subcolumns'] = array('Spaltenset','<img src="system/modules/Subcolumns/assets/example_de.png" alt="Beispiel für Spaltensets" style="float:right;" />Spaltensets ermöglichen es mehrere Spalten in das Layout einzufügen. Diese können dabei auch ineinander verschachtelt sein.');
 $GLOBALS['TL_LANG']['CTE']['colsetStart'] = array('Spaltenset Start','Über das Startelement werden die Spaltensets definiert.<br />Beim Ändern der Spaltenzahl bzw. -breite, wird diese automatisch auf die Kindelemente übertragen.<br />Wird von einem zweispaltigen auf das Dreispaltige Layout gewechselt, wird automatisch ein Container hinzugefügt. Wird vom dreispaltigen auf ein zweispaltiges Layout gewechselt, wird autopmatisch ein Container gelöscht und der Inhalt des letzten Containers unter dem Spaltenset dargestellt.');
 $GLOBALS['TL_LANG']['CTE']['colsetPart'] = array('Spaltenset Trennelemente','Hier können Sie keine Änderungen am Spaltenset vornehmen.<br /> WICHTIG: WIRD DIESES ELEMENT GELÖSCHT; WIRD AUCH DAS GESAMTE SPALTENSET GELÖSCHT!!');
 $GLOBALS['TL_LANG']['CTE']['colsetEnd'] = array('Spaltenset Endelement','Hier können Sie keine Änderungen am Spaltenset vornehmen.<br /> WICHTIG: WIRD DIESES ELEMENT GELÖSCHT; WIRD AUCH DAS GESAMTE SPALTENSET GELÖSCHT!!');
 
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = '<img src="system/modules/subcolumns/html/down.png" alt="Beispiel für Spaltensets" style="vertical-align:middle;" />Inhalt für die %s Spalte nach diesem Element einfügen.';
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = '<img src="system/modules/Subcolumns/assets/down.png" alt="Beispiel für Spaltensets" style="vertical-align:middle;" />Inhalt für die %s Spalte nach diesem Element einfügen.';
 
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = 'erste';
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = 'zweite';
