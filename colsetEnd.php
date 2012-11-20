@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * TYPOlight webCMS
@@ -18,6 +18,8 @@
  * @license    CC-A 2.0
  */
 
+namespace FelixPfeiffer\Subcolumns;
+
 
 /**
  * Class colsetEnd 
@@ -26,7 +28,7 @@
  * @author     Felix Pfeiffer <info@felixpfeiffer.com>
  * @package    Subcolumns
  */
-class colsetEnd extends Module
+class colsetEnd extends \ContentElement
 {
 
 	/**
@@ -50,7 +52,7 @@ class colsetEnd extends Module
 		
 		if (TL_MODE == 'BE')
 		{
-			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate = new \BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### COLUMNSET END <strong>'.$this->sc_name.'</strong> ###';
 			
 			return $objTemplate->parse();

@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * TYPOlight webCMS
@@ -19,6 +19,8 @@
  * @filesource
  */
 
+namespace FelixPfeiffer\Subcolumns;
+
 
 /**
  * Class colsetStart 
@@ -27,7 +29,7 @@
  * @author     Felix Pfeiffer <info@felixpfeiffer.com>
  * @package    Subcolumns
  */
-class colsetStart extends ContentElement
+class colsetStart extends \ContentElement
 {
 
 	/**
@@ -48,15 +50,15 @@ class colsetStart extends ContentElement
 	public function generate()
 	{
 		$this->strSet = $GLOBALS['TL_CONFIG']['subcolumns'] ? $GLOBALS['TL_CONFIG']['subcolumns'] : 'yaml3';
-		
+
 		if (TL_MODE == 'BE')
 		{
-			$this->Template = new BackendTemplate('be_wildcard');
+			$this->Template = new \BackendTemplate('be_wildcard');
 			$this->Template->wildcard = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 			
 			return $this->Template->parse();
 		}
-		
+
 		return parent::generate();
 	}
 	

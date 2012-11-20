@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * TYPOlight webCMS
@@ -19,6 +19,7 @@
  * @filesource
  */
 
+namespace FelixPfeiffer\Subcolumns;
 
 /**
  * Class colsetPart 
@@ -27,7 +28,7 @@
  * @author     Felix Pfeiffer <info@felixpfeiffer.com>
  * @package    Subcolumns
  */
-class colsetPart extends Module
+class colsetPart extends \ContentElement
 {
 
 	/**
@@ -69,7 +70,7 @@ class colsetPart extends Module
 					break;
 			}
 			
-			$this->Template = new BackendTemplate('be_wildcard');
+			$this->Template = new \BackendTemplate('be_wildcard');
 			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
 			
 			return $this->Template->parse();

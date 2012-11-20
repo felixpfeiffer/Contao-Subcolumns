@@ -28,15 +28,15 @@
  */
 
 $GLOBALS['TL_CTE']['subcolumn'] = array(
-	'colsetStart' => 'colsetStart',
-	'colsetPart' => 'colsetPart',
-	'colsetEnd' => 'colsetEnd'
+	'colsetStart' => 'Subcolumns\\colsetStart',
+	'colsetPart' => 'Subcolumns\\colsetPart',
+	'colsetEnd' => 'Subcolumns\\colsetEnd'
 );
 
 
 array_insert($GLOBALS['FE_MOD']['application'], 4, array
 (
-	'subcolumns' => 'ModuleSubcolumns'
+	'subcolumns' => 'Subcolumns\\ModuleSubcolumns'
 ));
 
 /**

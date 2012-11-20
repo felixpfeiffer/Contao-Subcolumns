@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * TYPOlight Open Source CMS
@@ -26,6 +26,7 @@
  * @filesource
  */
 
+namespace FelixPfeiffer\Subcolumns;
 
 /**
  * Class ModuleSubcolumns 
@@ -34,7 +35,7 @@
  * @author     Felix Pfeiffer <info@felixpfeiffer.com>
  * @package    Subcolumns
  */
-class ModuleSubcolumns extends Module
+class ModuleSubcolumns extends \Module
 {
 	/**
 	 * Template
@@ -57,7 +58,7 @@ class ModuleSubcolumns extends Module
 		
 		if (TL_MODE == 'BE')
 		{
-			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate = new \BackendTemplate('be_wildcard');
 
 			$objTemplate->wildcard = '### MODULE SUBCOLUMNS ###';
 			$objTemplate->title = $this->headline;

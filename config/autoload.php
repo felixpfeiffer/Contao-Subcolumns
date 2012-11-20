@@ -12,18 +12,27 @@
 
 
 /**
+ * Register the namespaces
+ */
+ClassLoader::addNamespaces(array
+(
+	'FelixPfeiffer',
+));
+
+
+/**
  * Register the classes
  */
 ClassLoader::addClasses(array
 (
-	'colsetEnd'             => 'system/modules/Subcolumns/colsetEnd.php',
-	'colsetPart'            => 'system/modules/Subcolumns/colsetPart.php',
-	'colsetStart'           => 'system/modules/Subcolumns/colsetStart.php',
-	'FormColEnd'            => 'system/modules/Subcolumns/FormColEnd.php',
-	'FormColPart'           => 'system/modules/Subcolumns/FormColPart.php',
-	'FormColStart'          => 'system/modules/Subcolumns/FormColStart.php',
-	'ModuleSubcolumns'      => 'system/modules/Subcolumns/ModuleSubcolumns.php',
-	'tl_subcolumnsCallback' => 'system/modules/Subcolumns/tl_subcolumnsCallback.php',
+	'FelixPfeiffer\Subcolumns\colsetEnd'        => 'system/modules/Subcolumns/colsetEnd.php',
+	'FelixPfeiffer\Subcolumns\colsetPart'       => 'system/modules/Subcolumns/colsetPart.php',
+	'FelixPfeiffer\Subcolumns\colsetStart'      => 'system/modules/Subcolumns/colsetStart.php',
+	'FormColEnd'                                => 'system/modules/Subcolumns/FormColEnd.php',
+	'FormColPart'                               => 'system/modules/Subcolumns/FormColPart.php',
+	'FormColStart'                              => 'system/modules/Subcolumns/FormColStart.php',
+	'FelixPfeiffer\Subcolumns\ModuleSubcolumns' => 'system/modules/Subcolumns/ModuleSubcolumns.php',
+	'tl_subcolumnsCallback'                     => 'system/modules/Subcolumns/tl_subcolumnsCallback.php',
 ));
 
 
