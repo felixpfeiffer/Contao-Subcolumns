@@ -42,9 +42,9 @@ array_insert($GLOBALS['FE_MOD']['application'], 4, array
 /**
  * Form fields
  */
-$GLOBALS['TL_FFL']['formcolstart'] = 'FormColStart';
-$GLOBALS['TL_FFL']['formcolpart'] = 'FormColPart';
-$GLOBALS['TL_FFL']['formcolend'] = 'FormColEnd';
+$GLOBALS['TL_FFL']['formcolstart'] = 'Subcolumns\\FormColStart';
+$GLOBALS['TL_FFL']['formcolpart'] = 'Subcolumns\\FormColPart';
+$GLOBALS['TL_FFL']['formcolend'] = 'Subcolumns\\FormColEnd';
 
 /**
  * Hooks

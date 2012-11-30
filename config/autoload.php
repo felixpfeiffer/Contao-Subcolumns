@@ -25,13 +25,18 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	'FelixPfeiffer\Subcolumns\colsetEnd'        => 'system/modules/Subcolumns/colsetEnd.php',
-	'FelixPfeiffer\Subcolumns\colsetPart'       => 'system/modules/Subcolumns/colsetPart.php',
-	'FelixPfeiffer\Subcolumns\colsetStart'      => 'system/modules/Subcolumns/colsetStart.php',
-	'FormColEnd'                                => 'system/modules/Subcolumns/FormColEnd.php',
-	'FormColPart'                               => 'system/modules/Subcolumns/FormColPart.php',
-	'FormColStart'                              => 'system/modules/Subcolumns/FormColStart.php',
-	'FelixPfeiffer\Subcolumns\ModuleSubcolumns' => 'system/modules/Subcolumns/ModuleSubcolumns.php',
+	// Elements
+	'FelixPfeiffer\Subcolumns\colsetEnd'        => 'system/modules/Subcolumns/elements/colsetEnd.php',
+	'FelixPfeiffer\Subcolumns\colsetPart'       => 'system/modules/Subcolumns/elements/colsetPart.php',
+	'FelixPfeiffer\Subcolumns\colsetStart'      => 'system/modules/Subcolumns/elements/colsetStart.php',
+
+	// Forms
+	'FelixPfeiffer\Subcolumns\FormColEnd'       => 'system/modules/Subcolumns/forms/FormColEnd.php',
+	'FelixPfeiffer\Subcolumns\FormColPart'      => 'system/modules/Subcolumns/forms/FormColPart.php',
+	'FelixPfeiffer\Subcolumns\FormColStart'     => 'system/modules/Subcolumns/forms/FormColStart.php',
+
+	// Modules
+	'FelixPfeiffer\Subcolumns\ModuleSubcolumns' => 'system/modules/Subcolumns/modules/ModuleSubcolumns.php',
 	'tl_subcolumnsCallback'                     => 'system/modules/Subcolumns/tl_subcolumnsCallback.php',
 ));
 
