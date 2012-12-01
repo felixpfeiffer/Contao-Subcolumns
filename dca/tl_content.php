@@ -77,23 +77,21 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_equalize'] = array
     'sql'       => "char(1) NOT NULL default ''"
 );
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['sc_container'] = array
-(
-    'sql'       => "varchar(255) NOT NULL default ''"
-);
-
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
 (
+    'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_parent'],
     'sql'       => "int(10) unsigned NOT NULL default '0'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_childs'] = array
 (
+    'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_childs'],
     'sql'       => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_sortid'] = array
 (
+    'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_sortid'],
     'sql'       => "int(2) unsigned NOT NULL default '0'"
 );
 
@@ -212,8 +210,6 @@ class tl_content_sc extends tl_content
 	private function createColset($objElement,$sc_type,$arrColset,$arrChilds='')
 	{
 		$intColcount = count($arrColset) - 2;
-		
-		$this->log('ID= ' . $objElement->id, 'SpaltensetHilfe createColset()', TL_ACCESS);
 		
 		/* Neues Spaltenset anlegen */
 		if($arrChilds=='')
