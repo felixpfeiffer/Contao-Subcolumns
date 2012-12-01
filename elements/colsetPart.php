@@ -79,9 +79,11 @@ class colsetPart extends \ContentElement
                 $arrMiniSet[] = '<span class="'.$strClass.'" style="width:'.$strWidth.'%;">'.($i+1).'</span>';
             }
 			
-			$this->Template = new \BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ### ' . '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span><br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
-			
+			$this->Template = new \BackendTemplate('be_subcolumns');
+			$this->Template->colsetTitle = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ###';
+            $this->Template->visualSet = '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span>';
+            $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
+
 			return $this->Template->parse();
 		}
 

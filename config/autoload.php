@@ -46,6 +46,7 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
+	'be_subcolumns'  => 'system/modules/Subcolumns/templates',
 	'ce_colsetEnd'   => 'system/modules/Subcolumns/templates',
 	'ce_colsetPart'  => 'system/modules/Subcolumns/templates',
 	'ce_colsetStart' => 'system/modules/Subcolumns/templates',

@@ -64,8 +64,10 @@ class colsetStart extends \ContentElement
                 $arrMiniSet[] = '<span class="'.$strClass.'" style="width:'.$strWidth.'%;">'.($i+1).'</span>';
             }
 
-            $this->Template = new \BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ### ' . '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span><br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+            $this->Template = new \BackendTemplate('be_subcolumns');
+            $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
+            $this->Template->visualSet = '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span>';
+            $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 			
 			return $this->Template->parse();
 		}

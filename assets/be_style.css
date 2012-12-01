@@ -1,9 +1,11 @@
 .colset_wrapper {
     display:inline-block;
+    margin-left:1em;
     overflow:hidden;
-    width:100px;
+    width:200px;
     border:1px solid #ccc;
     background-color:#ededed;
+    vertical-align: text-bottom;
 }
 .colset_column {
     display:block;
