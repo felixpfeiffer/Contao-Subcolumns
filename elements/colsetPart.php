@@ -69,9 +69,18 @@ class colsetPart extends \ContentElement
 					$colID = $GLOBALS['TL_LANG']['MSC']['sc_fifth'];
 					break;
 			}
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+            $strWidth = 100/$intCountContainers;
+            $arrMiniSet = array();
+            for($i=0;$i<$intCountContainers;$i++)
+            {
+                $strClass = 'colset_column' . ($i == $this->sc_sortid ? ' colset_active' : '');
+                $arrMiniSet[] = '<span class="'.$strClass.'" style="width:'.$strWidth.'%;">'.($i+1).'</span>';
+            }
 			
 			$this->Template = new \BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
+			$this->Template->wildcard = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ### ' . '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span><br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
 			
 			return $this->Template->parse();
 		}

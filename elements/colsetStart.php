@@ -53,8 +53,19 @@ class colsetStart extends \ContentElement
 
 		if (TL_MODE == 'BE')
 		{
-			$this->Template = new \BackendTemplate('be_wildcard');
-			$this->Template->wildcard = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+            $strWidth = 100/$intCountContainers;
+            $arrMiniSet = array();
+            for($i=0;$i<$intCountContainers;$i++)
+            {
+                $strClass = 'colset_column' . ($i==0 ? ' colset_active' : '');
+                $arrMiniSet[] = '<span class="'.$strClass.'" style="width:'.$strWidth.'%;">'.($i+1).'</span>';
+            }
+
+            $this->Template = new \BackendTemplate('be_wildcard');
+			$this->Template->wildcard = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ### ' . '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span><br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 			
 			return $this->Template->parse();
 		}

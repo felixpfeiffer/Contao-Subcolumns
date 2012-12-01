@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * TYPOlight Open Source CMS
@@ -43,7 +43,8 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sc_type'] = array
 	'exclude'       	=> true,
 	'inputType'     	=> 'select',
 	'options_callback'	=> array('tl_module_sc','getAllTypes'),
-	'eval'          	=> array('submitOnChange'=>true)
+	'eval'          	=> array('submitOnChange'=>true),
+    'sql'               => "varchar(14) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sc_modules'] = array
@@ -68,14 +69,16 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sc_modules'] = array
 				'options_callback'	=> array('tl_module_sc','getColumns')
 			)
 		)
-	)
+	),
+    'sql'               => "blob NULL"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sc_gap'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_module']['sc_gap'],
 	'inputType'	=> 'text',
-	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50')		
+	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50'),
+    'sql'       => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sc_gapdefault'] = array
@@ -83,14 +86,16 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sc_gapdefault'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_module']['sc_gapdefault'],
 	'default'	=> 1,
 	'inputType'	=> 'checkbox',
-	'eval'		=> array('tl_class'=>'w50')
+	'eval'		=> array('tl_class'=>'w50'),
+    'sql'       => "char(1) NOT NULL default '1'"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sc_equalize'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_module']['sc_equalize'],
 	'inputType'	=> 'checkbox',
-	'eval'		=> array('tl_class'=>'clr')		
+	'eval'		=> array('tl_class'=>'clr'),
+    'sql'       => "char(1) NOT NULL default ''"
 );
 
 /**

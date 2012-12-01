@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * TYPOlight Open Source CMS
@@ -67,7 +67,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_type'] = array(
 	'exclude'       => true,
 	'inputType'     => 'select',
 	'options_callback'=> array('tl_form_subcols','getAllTypes'),
-	'eval'          => array('tl_class'=>'w50')
+	'eval'          => array('tl_class'=>'w50'),
+    'sql'               => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_name'] = array(
@@ -75,30 +76,48 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_name'] = array(
 	'exclude'	=> true,
 	'inputType'	=> 'text',
 	'save_callback' => array(array('tl_form_subcols','setColsetName')),
-	'eval'		=> array('maxlength'=>'255','unique'=>true,'spaceToUnderscore'=>true,'tl_class'=>'w50')
+	'eval'		=> array('maxlength'=>'255','unique'=>true,'spaceToUnderscore'=>true,'tl_class'=>'w50'),
+    'sql'               => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_gapuse'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_form_field']['fsc_gapuse'],
 	'exclude'	=> true,
 	'inputType'	=> 'checkbox',
-	'eval'		=> array('submitOnChange'=>true,'tl_class'=>'clr')
+	'eval'		=> array('submitOnChange'=>true,'tl_class'=>'clr'),
+    'sql'               => "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_gap'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_form_field']['fsc_gap'],
 	'exclude'	=> true,
 	'inputType'	=> 'text',
-	'eval'		=> array('maxlength'=>'4','regxp'=>'digit')
+	'eval'		=> array('maxlength'=>'4','regxp'=>'digit'),
+    'sql'               => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_equalize'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_form_field']['fsc_equalize'],
 	'inputType'	=> 'checkbox',
-	'eval'		=> array('tl_class'=>'clr')
+	'eval'		=> array('tl_class'=>'clr'),
+    'sql'               => "char(1) NOT NULL default ''"
 );
 
- 
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_parent'] = array
+(
+    'sql'       => "int(10) unsigned NOT NULL default '0'"
+);
+
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_childs'] = array
+(
+    'sql'       => "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_sortid'] = array
+(
+    'sql'       => "int(2) unsigned NOT NULL default '0'"
+);
+
  
  
 

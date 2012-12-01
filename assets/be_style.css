@@ -1,0 +1,19 @@
+.colset_wrapper {
+    display:inline-block;
+    overflow:hidden;
+    width:100px;
+    border:1px solid #ccc;
+    background-color:#ededed;
+}
+.colset_column {
+    display:block;
+    float:left;
+    line-height:1.5em;
+    text-align:center;
+    color: #333;
+    font-weight:bold;
+}
+.colset_active {
+    background-color:#f00;
+    color: #fff;
+}

@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
@@ -39,14 +39,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_name'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_name'],
 	'inputType'	=> 'text',
 	'save_callback' => array(array('tl_content_sc','setColsetName')),
-	'eval'		=> array('maxlength'=>'255','unique'=>true,'spaceToUnderscore'=>true)		
+	'eval'		=> array('maxlength'=>'255','unique'=>true,'spaceToUnderscore'=>true),
+    'sql'       => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gap'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_gap'],
 	'inputType'	=> 'text',
-	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50')		
+	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50'),
+    'sql'       => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_type'] = array
@@ -54,7 +56,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_type'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_type'],
 	'inputType'	=> 'select',
 	'options_callback'=> array('tl_content_sc','getAllTypes'),
-	'eval'		=> array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50')		
+	'eval'		=> array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+    'sql'       => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gapdefault'] = array
@@ -62,14 +65,36 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gapdefault'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_gapdefault'],
 	'default'	=> 1,
 	'inputType'	=> 'checkbox',
-	'eval'		=> array('tl_class'=>'clr m12 w50')
+	'eval'		=> array('tl_class'=>'clr m12 w50'),
+    'sql'       => "char(1) NOT NULL default '1'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_equalize'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_equalize'],
 	'inputType'	=> 'checkbox',
-	'eval'		=> array()		
+	'eval'		=> array(),
+    'sql'       => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_container'] = array
+(
+    'sql'       => "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
+(
+    'sql'       => "int(10) unsigned NOT NULL default '0'"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_childs'] = array
+(
+    'sql'       => "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_sortid'] = array
+(
+    'sql'       => "int(2) unsigned NOT NULL default '0'"
 );
 
 /* Extend existing fields with additional functionality */
@@ -78,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['invisible']['save_callback'][] = arr
 
 /* hidden fields */
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
+/*$GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
 (
 	'inputType'	=> 'text',	
 );
@@ -89,7 +114,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_childs'] = array
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_sortid'] = array
 (
 	'inputType'	=> 'text',	
-);
+); */
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['colsetPart'] = 'cssID';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['colsetEnd'] = $GLOBALS['TL_DCA']['tl_content']['palettes']['default'];
