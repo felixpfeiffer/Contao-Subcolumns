@@ -77,6 +77,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_equalize'] = array
     'sql'       => "char(1) NOT NULL default ''"
 );
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_color'] = array
+(
+	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_color'],
+    'inputType' => 'text',
+    'eval'      => array('maxlength'=>6, 'multiple'=>true, 'size'=>2, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w50 wizard'),
+    'sql'       => "varchar(64) NOT NULL default ''"
+);
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
 (
     'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_parent'],
@@ -161,7 +169,7 @@ class tl_content_sc extends tl_content
 		$strGap = $GLOBALS['TL_SUBCL'][$strSet]['gap'] ? ',sc_gapdefault,sc_gap' : '';
 		$strEquilize = $GLOBALS['TL_SUBCL'][$strSet]['equalize'] ? '{colheight_legend:hide},sc_equalize;' : '';
 			
-		$GLOBALS['TL_DCA']['tl_content']['palettes']['colsetStart'] = '{type_legend},type;{colset_legend},sc_name,sc_type'.$strGap.';'.$strEquilize.'{protected_legend:hide},protected;{expert_legend:hide},guests,invisible,cssID,space';
+		$GLOBALS['TL_DCA']['tl_content']['palettes']['colsetStart'] = '{type_legend},type;{colset_legend},sc_name,sc_type,sc_color'.$strGap.';'.$strEquilize.'{protected_legend:hide},protected;{expert_legend:hide},guests,invisible,cssID,space';
 		
 	}
 	
@@ -210,6 +218,8 @@ class tl_content_sc extends tl_content
 	private function createColset($objElement,$sc_type,$arrColset,$arrChilds='')
 	{
 		$intColcount = count($arrColset) - 2;
+		
+		$this->log('ID= ' . $objElement->id, 'SpaltensetHilfe createColset()', TL_ACCESS);
 		
 		/* Neues Spaltenset anlegen */
 		if($arrChilds=='')
