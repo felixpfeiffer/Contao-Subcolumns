@@ -236,7 +236,8 @@ class tl_content_sc extends tl_content
 							'sc_parent'=>$objElement->id,
 							'sc_sortid'=>0,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 
             if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
@@ -292,8 +293,9 @@ class tl_content_sc extends tl_content
 								'sc_gap' => $objElement->sc_gap,
 								'sc_gapdefault' => $objElement->sc_gapdefault,
 								'sc_sortid' => $i,
-								'sc_name' => $objElement->sc_name.'-Part-'.($i++)
-								
+								'sc_name' => $objElement->sc_name.'-Part-'.($i++),
+								'sc_color' => $objElement->sc_color
+
 				);
 				
 				$this->Database->prepare("UPDATE tl_content %s WHERE id=".$v)
@@ -340,7 +342,8 @@ class tl_content_sc extends tl_content
 			$arrSet = array(
 							'sc_type'=>$sc_type,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 			
 			foreach($arrChilds as $value)
@@ -398,7 +401,8 @@ class tl_content_sc extends tl_content
 							'sc_parent' => $objElement->id,
 							'sc_sortid' => 0,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 
             if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
@@ -436,7 +440,8 @@ class tl_content_sc extends tl_content
 			$arrData = array(
 							'sc_type'=>$sc_type,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 			
 			foreach($arrChilds as $value)
