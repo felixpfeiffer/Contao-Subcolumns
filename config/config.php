@@ -161,7 +161,7 @@ $GLOBALS['TL_SUBCL'] = array(
 			'ie'		=> 'system/modules/subcolumns/html/yaml4/subcolsIEHacks.css'
 		),
 		'sets'=> array(
-			'20x20x20x20x20' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gr','ym-gbox')),
+			'20x20x20x20x20' => array(array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gr','ym-gbox')),
 			'50x16x16x16' => array(array('ym-g50 ym-gl','ym-gbox'),array('ym-g16 ym-gl','ym-gbox'),array('ym-g16 ym-gl','ym-gbox'),array('ym-g16 ym-gr','ym-gbox')),
 			'25x25x25x25' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gr','ym-gbox')),
 			'25x25x50' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g50 ym-gr','ym-gbox')),
@@ -200,7 +200,7 @@ $GLOBALS['TL_SUBCL'] = array(
 			'css'		=> 'system/modules/subcolumns/html/yaml4/subcols_extended.css'
 		),
 		'sets'=> array(
-			'20x20x20x20x20' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gr','ym-gbox')),
+			'20x20x20x20x20' => array(array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gr','ym-gbox')),
 			'50x16x16x16' => array(array('ym-g50 ym-gl','ym-gbox'),array('ym-g16 ym-gl','ym-gbox'),array('ym-g16 ym-gl','ym-gbox'),array('ym-g16 ym-gr','ym-gbox')),
 			'25x25x25x25' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gr','ym-gbox')),
 			'25x25x50' => array(array('ym-g25 ym-gl','ym-gbox'),array('ym-g25 ym-gl','ym-gbox'),array('ym-g50 ym-gr','ym-gbox')),
