@@ -307,7 +307,8 @@ class tl_content_sc extends tl_content
 							'sc_type'=>$sc_type,
 							'sc_gap' => $objElement->sc_gap,
 							'sc_sortid' => $i,
-							'sc_name' => $objElement->sc_name.'-End'
+							'sc_name' => $objElement->sc_name.'-End',
+                            'sc_color' => $objElement->sc_color
 			);
 			
 			$this->Database->prepare("UPDATE tl_content %s WHERE id=".$intLastElement)

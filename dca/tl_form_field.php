@@ -50,7 +50,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['list']['operations']['toggle']['button_call
 **/
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['__selector__'][] = 'fsc_gapuse';
 
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolstart'] = '{type_legend},type;{colsettings_legend},fsc_type,fsc_name,fsc_equalize,fsc_gapuse';
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolstart'] = '{type_legend},type;{colsettings_legend},fsc_type,fsc_color,fsc_name,fsc_equalize,fsc_gapuse';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolpart'] = '{type_legend},type;{colsettings_legend},fsc_type';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolend'] = '{type_legend},type;{colsettings_legend},fsc_type';
 
@@ -101,6 +101,14 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_equalize'] = array(
 	'inputType'	=> 'checkbox',
 	'eval'		=> array('tl_class'=>'clr'),
     'sql'               => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_color'] = array
+(
+    'label'		=> &$GLOBALS['TL_LANG']['tl_form_field']['fsc_color'],
+    'inputType' => 'text',
+    'eval'      => array('maxlength'=>6, 'multiple'=>true, 'size'=>2, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w50 wizard'),
+    'sql'       => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_parent'] = array
@@ -204,7 +212,8 @@ class tl_form_subcols extends tl_form_field
 							'fsc_parent'=>$dc->activeRecord->id,
 							'fsc_sortid'=>0,
 							'fsc_gapuse' => $dc->activeRecord->fsc_gapuse,
-							'fsc_gap' => $dc->activeRecord->fsc_gap
+							'fsc_gap' => $dc->activeRecord->fsc_gap,
+							'fsc_color' => $dc->activeRecord->fsc_color
 							);
 			
 			for($i=1;$i<=$intColcount+1;$i++)
@@ -253,7 +262,8 @@ class tl_form_subcols extends tl_form_field
 				$arrSet = array('fsc_type' => $dc->activeRecord->fsc_type,
 								'fsc_gapuse' => $dc->activeRecord->fsc_gapuse,
 								'fsc_gap' => $dc->activeRecord->fsc_gap,
-								'fsc_name' => $dc->activeRecord->fsc_name.'-Part-'.($i++)
+								'fsc_name' => $dc->activeRecord->fsc_name.'-Part-'.($i++),
+                                'fsc_color' => $dc->activeRecord->fsc_color
 				);
 				
 				$this->Database->prepare("UPDATE tl_form_field %s WHERE id=".$v)
@@ -264,7 +274,8 @@ class tl_form_subcols extends tl_form_field
 			$arrSet = array('fsc_type' => $dc->activeRecord->fsc_type,
 							'fsc_gapuse' => $dc->activeRecord->fsc_gapuse,
 							'fsc_gap' => $dc->activeRecord->fsc_gap,
-							'fsc_name' => $dc->activeRecord->fsc_name.'-End'
+							'fsc_name' => $dc->activeRecord->fsc_name.'-End',
+                            'fsc_color' => $dc->activeRecord->fsc_color
 			);
 			
 			$this->Database->prepare("UPDATE tl_form_field %s WHERE id=".$intLastElement)
@@ -298,7 +309,8 @@ class tl_form_subcols extends tl_form_field
 			/* Andere Daten im Colset anpassen - Spaltenabstand und SpaltenSet-Typ */
 			$arrSet = array('fsc_type' => $dc->activeRecord->fsc_type,
 							'fsc_gapuse' => $dc->activeRecord->fsc_gapuse,
-							'fsc_gap' => $dc->activeRecord->fsc_gap
+							'fsc_gap' => $dc->activeRecord->fsc_gap,
+                            'fsc_color' => $dc->activeRecord->fsc_color
 							);
 			
 			foreach($arrChilds as $value)
@@ -356,7 +368,8 @@ class tl_form_subcols extends tl_form_field
 							'fsc_parent' => $dc->id,
 							'fsc_sortid' => 0,
 							'fsc_gapuse' => $dc->activeRecord->fsc_gapuse,
-							'fsc_gap' => $dc->activeRecord->fsc_gap
+							'fsc_gap' => $dc->activeRecord->fsc_gap,
+                            'fsc_color' => $dc->activeRecord->fsc_color
 							);
 			
 			$intDiff;
@@ -390,7 +403,8 @@ class tl_form_subcols extends tl_form_field
 			/* Andere Daten im Colset anpassen - Spaltenabstand und SpaltenSet-Typ */
 			$arrData = array('fsc_type' => $dc->activeRecord->fsc_type,
 							'fsc_gapuse' => $dc->activeRecord->fsc_gapuse,
-							'fsc_gap' => $dc->activeRecord->fsc_gap
+							'fsc_gap' => $dc->activeRecord->fsc_gap,
+                            'fsc_color' => $dc->activeRecord->fsc_color
 							);
 			
 			foreach($arrChilds as $value)

@@ -38,11 +38,12 @@ $GLOBALS['TL_LANG']['FFL']['formcolend']    = array('Spaltenset-Endelement', 'En
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_form_field']['fsc_type']           = array('Spaltenset', 'Bitte wählen Sie die Spaltenaufteilung.');
-$GLOBALS['TL_LANG']['tl_form_field']['fsc_name']           = array('Spaltenset-Name', 'Bitte geben Sie einen internen Namen für das Spaltenset ein. Alternativ wird dieser vom System erzeugt.');
-$GLOBALS['TL_LANG']['tl_form_field']['fsc_gapuse']           = array('Spaltenabstand nutzen', 'Möchten Sie einen Abstand zwischen den Spalten verwenden?');
-$GLOBALS['TL_LANG']['tl_form_field']['fsc_gap']           = array('Spaltenabstand', 'Geben Sie einen Spaltenabstand in Pixeln ein (die Einheit px nicht angeben). Der Standard-Wert ist 12px.');
-$GLOBALS['TL_LANG']['tl_form_field']['fsc_equalize']           = array('Gleich hohe Spalten', 'Wählen Sie, ob die Spalten die gleiche Höhe haben sollen (z.B. beim Einsatz von Hintergrundfarben).');
+$GLOBALS['TL_LANG']['tl_form_field']['fsc_type']        = array('Spaltenset', 'Bitte wählen Sie die Spaltenaufteilung.');
+$GLOBALS['TL_LANG']['tl_form_field']['fsc_name']        = array('Spaltenset-Name', 'Bitte geben Sie einen internen Namen für das Spaltenset ein. Alternativ wird dieser vom System erzeugt.');
+$GLOBALS['TL_LANG']['tl_form_field']['fsc_gapuse']      = array('Spaltenabstand nutzen', 'Möchten Sie einen Abstand zwischen den Spalten verwenden?');
+$GLOBALS['TL_LANG']['tl_form_field']['fsc_gap']         = array('Spaltenabstand', 'Geben Sie einen Spaltenabstand in Pixeln ein (die Einheit px nicht angeben). Der Standard-Wert ist 12px.');
+$GLOBALS['TL_LANG']['tl_form_field']['fsc_equalize']    = array('Gleich hohe Spalten', 'Wählen Sie, ob die Spalten die gleiche Höhe haben sollen (z.B. beim Einsatz von Hintergrundfarben).');
+$GLOBALS['TL_LANG']['tl_form_field']['fsc_color']       = array('Backend-Farbe', 'Sie können eine Signalfarbe wählen, mit der alle Elemente dieses Spaltensets in der Backendansicht farblich gekennzeichnet werden.');
 
 /**
  * Legend

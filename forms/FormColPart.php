@@ -67,25 +67,40 @@ class FormColPart extends \Widget
 		
 		if (TL_MODE == 'BE')
 		{
-			switch($this->fsc_sortid)
-			{
-				case 1:
-					$colID = $GLOBALS['TL_LANG']['MSC']['sc_second'];
-					break;
-				case 2:
-					$colID = $GLOBALS['TL_LANG']['MSC']['sc_third'];
-					break;
-				case 3:
-					$colID = $GLOBALS['TL_LANG']['MSC']['sc_fourth'];
-					break;
-				case 4:
-					$colID = $GLOBALS['TL_LANG']['MSC']['sc_fifth'];
-					break;
-			}
-			
-			$objTemplate = new \BackendTemplate('be_wildcard');
-			$objTemplate->wildcard = '### COLUMNSET PART <strong>'.$this->fsc_name.'</strong> ### <br><br>' . sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
-			return $objTemplate->parse();
+            $arrColor = unserialize($this->fsc_color);
+
+            switch($this->fsc_sortid)
+            {
+                case 1:
+                    $colID = $GLOBALS['TL_LANG']['MSC']['sc_second'];
+                    break;
+                case 2:
+                    $colID = $GLOBALS['TL_LANG']['MSC']['sc_third'];
+                    break;
+                case 3:
+                    $colID = $GLOBALS['TL_LANG']['MSC']['sc_fourth'];
+                    break;
+                case 4:
+                    $colID = $GLOBALS['TL_LANG']['MSC']['sc_fifth'];
+                    break;
+            }
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type]);
+            $strWidth = 100/$intCountContainers;
+            $arrMiniSet = array();
+            for($i=0;$i<$intCountContainers;$i++)
+            {
+                $strClass = 'colset_column' . ($i == $this->fsc_sortid ? ' colset_active' : '');
+                $arrMiniSet[] = '<span class="'.$strClass.'" style="width:'.$strWidth.'%;">'.($i+1).'</span>';
+            }
+
+            $this->Template = new \BackendTemplate('be_subcolumns');
+            $this->Template->setColor = $this->compileColor($arrColor);
+            $this->Template->colsetTitle = '### COLUMNSET PART <strong>'.$this->fsc_name.'</strong> ###';
+            $this->Template->visualSet = '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span>';
+            $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
+
+            return $this->Template->parse();
 		}
 		
 		$arrCounts = array('1'=>'second','2'=>'third','3'=>'fourth','4'=>'fifth');
@@ -155,6 +170,90 @@ class FormColPart extends \Widget
 
 		return $objTemplate->parse();
 	}
+
+    /**
+     * Compile a color value and return a hex or rgba color
+     * @param mixed
+     * @param boolean
+     * @param array
+     * @return string
+     */
+    protected function compileColor($color)
+    {
+        if (!is_array($color))
+        {
+            return '#' . $this->shortenHexColor($color);
+        }
+        elseif (!isset($color[1]) || empty($color[1]))
+        {
+            return '#' . $this->shortenHexColor($color[0]);
+        }
+        else
+        {
+            return 'rgba(' . implode(',', $this->convertHexColor($color[0], $blnWriteToFile, $vars)) . ','. ($color[1] / 100) .')';
+        }
+    }
+
+    /**
+     * Try to shorten a hex color
+     * @param string
+     * @return string
+     */
+    protected function shortenHexColor($color)
+    {
+        if ($color[0] == $color[1] && $color[2] == $color[3] && $color[4] == $color[5])
+        {
+            return $color[0] . $color[2] . $color[4];
+        }
+
+        return $color;
+    }
+
+
+    /**
+     * Convert hex colors to rgb
+     * @param string
+     * @param boolean
+     * @param array
+     * @return array
+     * @see http://de3.php.net/manual/de/function.hexdec.php#99478
+     */
+    protected function convertHexColor($color, $blnWriteToFile=false, $vars=array())
+    {
+        // Support global variables
+        if (strncmp($color, '$', 1) === 0)
+        {
+            if (!$blnWriteToFile)
+            {
+                return array($color);
+            }
+            else
+            {
+                $color = str_replace(array_keys($vars), array_values($vars), $color);
+            }
+        }
+
+        $rgb = array();
+
+        // Try to convert using bitwise operation
+        if (strlen($color) == 6)
+        {
+            $dec = hexdec($color);
+            $rgb['red'] = 0xFF & ($dec >> 0x10);
+            $rgb['green'] = 0xFF & ($dec >> 0x8);
+            $rgb['blue'] = 0xFF & $dec;
+        }
+
+        // Shorthand notation
+        elseif (strlen($color) == 3)
+        {
+            $rgb['red'] = hexdec(str_repeat(substr($color, 0, 1), 2));
+            $rgb['green'] = hexdec(str_repeat(substr($color, 1, 1), 2));
+            $rgb['blue'] = hexdec(str_repeat(substr($color, 2, 1), 2));
+        }
+
+        return $rgb;
+    }
 }
 
 ?>
