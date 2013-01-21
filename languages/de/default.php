@@ -31,7 +31,7 @@ $GLOBALS['TL_LANG']['CTE']['colsetStart'] = array('Spaltenset Start','Über das 
 $GLOBALS['TL_LANG']['CTE']['colsetPart'] = array('Spaltenset Trennelemente','Hier können Sie keine Änderungen am Spaltenset vornehmen.<br /> WICHTIG: WIRD DIESES ELEMENT GELÖSCHT; WIRD AUCH DAS GESAMTE SPALTENSET GELÖSCHT!!');
 $GLOBALS['TL_LANG']['CTE']['colsetEnd'] = array('Spaltenset Endelement','Hier können Sie keine Änderungen am Spaltenset vornehmen.<br /> WICHTIG: WIRD DIESES ELEMENT GELÖSCHT; WIRD AUCH DAS GESAMTE SPALTENSET GELÖSCHT!!');
 
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = '<img src="system/modules/Subcolumns/assets/down.png" alt="Beispiel für Spaltensets" style="vertical-align:middle;" />Inhalt für die %s Spalte nach diesem Element einfügen.';
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = 'Inhalt für die %s Spalte nach diesem Element einfügen.';
 
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = 'erste';
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = 'zweite';

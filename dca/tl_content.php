@@ -225,9 +225,10 @@ class tl_content_sc extends tl_content
 		if($arrChilds=='')
 		{
 			$arrChilds = array();
-			$this->moveRows($objElement->pid,$objElement->sorting,128 * ( count($arrColset) + 1 ));
+			$this->moveRows($objElement->pid,$objElement->ptable,$objElement->sorting,128 * ( count($arrColset) + 1 ));
 			
 			$arrSet = array('pid' => $objElement->pid,
+                            'ptable' => $objElement->ptable,
 							'tstamp' => time(),
 							'sorting'=>0,
 							'type' => 'colsetPart',
@@ -377,7 +378,7 @@ class tl_content_sc extends tl_content
 			
 			$objEnd = $this->Database->prepare("SELECT id,sorting,sc_sortid FROM tl_content WHERE id=?")->execute($arrChilds[count($arrChilds)-1]);
 			
-			$this->moveRows($objElement->pid,$objEnd->sorting,64 * ( $intDiff) );
+			$this->moveRows($objElement->pid,$objElement->ptable,$objEnd->sorting,64 * ( $intDiff) );
 			
 			/*  Den Typ des letzten Elements auf End-ELement umsetzen und SC-namen anpassen */
 			$intChildId	= count($arrChilds);
@@ -395,6 +396,7 @@ class tl_content_sc extends tl_content
 			
 			$arrSet = array('type' => 'colsetPart',
 							'pid' => $objElement->pid,
+                            'ptable' => $objElement->ptable,
 							'tstamp' => time(),
 							'sorting' => 0,
 							'sc_name' => '',
@@ -553,10 +555,10 @@ class tl_content_sc extends tl_content
 		
 	}
 	
-	private function moveRows($pid,$sorting,$ammount=128)
+	private function moveRows($pid,$ptable,$sorting,$ammount=128)
 	{
-		$this->Database->prepare("UPDATE tl_content SET sorting = sorting + ? WHERE pid=? AND sorting > ?")
-									->execute($ammount,$pid,$sorting);
+		$this->Database->prepare("UPDATE tl_content SET sorting = sorting + ? WHERE pid=? AND ptable=? AND sorting > ?")
+									->execute($ammount,$pid,$ptable,$sorting);
 		
 		
 	}

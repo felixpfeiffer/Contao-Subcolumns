@@ -66,11 +66,31 @@ class FormColEnd extends \Widget
 		
 		if (TL_MODE == 'BE')
 		{
+            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
+            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+
             $arrColor = unserialize($this->fsc_color);
+
+            $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type];
+            $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
+            $blnInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type]);
+
+            $strMiniset = '<div class="colsetexample final '.$strSCClass.'">';
+
+            for($i=0;$i<$intCountContainers;$i++)
+            {
+                $arrPresentColset = $arrColset[$i];
+                $strMiniset .= '<div class="'.$arrPresentColset[0].'">'.($blnInside ? '<div class="'.$arrPresentColset[1].'">' : '').($i+1).($blnInside ? '</div>' : '').'</div>';
+            }
+
+            $strMiniset .= '</div>';
 
             $this->Template = new \BackendTemplate('be_subcolumns');
             $this->Template->setColor = $this->compileColor($arrColor);
-            $this->Template->colsetTitle = '### COLUMNSET END <strong>'.$this->fsc_name.'</strong> ###';
+            $this->Template->colsetTitle = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ###';
+            $this->Template->visualSet = $strMiniset;
 
             return $this->Template->parse();
 		}

@@ -54,7 +54,16 @@ class colsetPart extends \ContentElement
 		if (TL_MODE == 'BE')
 		{
 
+            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
+            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+
             $arrColor = unserialize($this->sc_color);
+
+            $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
+            $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
+            $blnInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
 
             switch($this->sc_sortid)
 			{
@@ -72,22 +81,23 @@ class colsetPart extends \ContentElement
 					break;
 			}
 
-            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
-            $strWidth = 100/$intCountContainers;
-            $arrMiniSet = array();
+            $strMiniset = '<div class="colsetexample '.$strSCClass.'">';
+
             for($i=0;$i<$intCountContainers;$i++)
             {
-                $strClass = 'colset_column' . ($i == $this->sc_sortid ? ' colset_active' : '');
-                $arrMiniSet[] = '<span class="'.$strClass.'" style="width:'.$strWidth.'%;">'.($i+1).'</span>';
+                $arrPresentColset = $arrColset[$i];
+                $strMiniset .= '<div class="'.$arrPresentColset[0].($i==$this->sc_sortid ? ' active' : '').'">'.($blnInside ? '<div class="'.$arrPresentColset[1].'">' : '').($i+1).($blnInside ? '</div>' : '').'</div>';
             }
-			
-			$this->Template = new \BackendTemplate('be_subcolumns');
+
+            $strMiniset .= '</div>';
+
+            $this->Template = new \BackendTemplate('be_subcolumns');
             $this->Template->setColor = $this->compileColor($arrColor);
-            $this->Template->colsetTitle = '### COLUMNSET PART <strong>'.$this->sc_name.'</strong> ###';
-            $this->Template->visualSet = '<span class="colset_wrapper">' . implode($arrMiniSet) . '</span>';
+            $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
+            $this->Template->visualSet = $strMiniset;
             $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
 
-			return $this->Template->parse();
+            return $this->Template->parse();
 		}
 
 		return parent::generate();
@@ -104,7 +114,7 @@ class colsetPart extends \ContentElement
 		
 		if($this->sc_gapdefault == 1)
 		{
-			$gap_value = $this->sc_gap != "" ? $this->sc_gap : '12';
+            $gap_value = $this->sc_gap != "" ? $this->sc_gap : ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] ? $GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] : 12);
 			$gap_unit = 'px';
 			
 			if(count($container) == 2)

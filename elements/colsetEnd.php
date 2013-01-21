@@ -52,13 +52,33 @@ class colsetEnd extends \ContentElement
 		
 		if (TL_MODE == 'BE')
 		{
+            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
+            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+
             $arrColor = unserialize($this->sc_color);
+
+            $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
+            $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
+            $blnInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+
+            $strMiniset = '<div class="colsetexample final '.$strSCClass.'">';
+
+            for($i=0;$i<$intCountContainers;$i++)
+            {
+                $arrPresentColset = $arrColset[$i];
+                $strMiniset .= '<div class="'.$arrPresentColset[0].'">'.($blnInside ? '<div class="'.$arrPresentColset[1].'">' : '').($i+1).($blnInside ? '</div>' : '').'</div>';
+            }
+
+            $strMiniset .= '</div>';
 
             $this->Template = new \BackendTemplate('be_subcolumns');
             $this->Template->setColor = $this->compileColor($arrColor);
-            $this->Template->colsetTitle = '### COLUMNSET END <strong>'.$this->sc_name.'</strong> ###';
-			
-			return $this->Template->parse();
+            $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
+            $this->Template->visualSet = $strMiniset;
+
+            return $this->Template->parse();
 		}
 
 		return parent::generate();

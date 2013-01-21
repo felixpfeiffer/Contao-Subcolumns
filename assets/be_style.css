@@ -1,20 +1,26 @@
-.colset_wrapper {
-    display:inline-block;
-    margin-left:1em;
-    overflow:hidden;
-    width:200px;
-    border:1px solid #ccc;
-    background-color:#ededed;
-    vertical-align: text-bottom;
+.colsetexample {
+    width: 140px !important;
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    float: left;
+    margin-right: 1em !important;
 }
-.colset_column {
-    display:block;
-    float:left;
-    line-height:1.5em;
-    text-align:center;
-    color: #333;
-    font-weight:bold;
+.colsetexample > div > div {
+    background-color: #fff;
+    margin: 2px;
+    text-align: center;
+    padding: 3px;
+    border: 1px dashed #cccccc;
+    line-height: 2em;
 }
-.colset_active {
-    background-color:#A7FF62
+.colsetexample > div.active > div {
+    background-color: #8ab858;
+}
+.colsetexample.final > div > div {
+    background-color: #ff2222;
+    color: #FFF;
+}
+
+.sc_hint {
+    line-height: 3em;
 }

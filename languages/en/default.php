@@ -32,7 +32,7 @@ $GLOBALS['TL_LANG']['CTE']['colsetStart'] = array('Column-Set Start','The start-
 $GLOBALS['TL_LANG']['CTE']['colsetPart'] = array('Column-Set Part-element','You can\'t change any option of the colset within this content-element.<br /> IMPORTANT: IF YOU ERASE THIS CONTENT-ELEMENT, THE OTHER ELEMENTS LINKED WITH THIS COLUMN-SET WILL BE ERASED ASWELL!!');
 $GLOBALS['TL_LANG']['CTE']['colsetEnd'] = array('Column-Set End-element','You can\'t change any option of the colset within this content-element.<br /> IMPORTANT: IF YOU ERASE THIS CONTENT-ELEMENT, THE OTHER ELEMENTS LINKED WITH THIS COLUMN-SET WILL BE ERASED ASWELL!!');
 
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = '<img src="system/modules/Subcolumns/assets/down.gif" alt="Beispiel für Spaltensets" style="float:left;" />Place all content for the %s column after this element.';
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = 'Place all content for the %s column after this element.';
 
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = 'first';
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = 'second';
