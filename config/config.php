@@ -53,6 +53,14 @@ $GLOBALS['TL_FFL']['formcolend'] = 'Subcolumns\\FormColEnd';
 $GLOBALS['TL_HOOKS']['clipboardCopy'][] = array('tl_content_sc', 'clipboardCopy');
 $GLOBALS['TL_HOOKS']['clipboardCopyAll'][] = array('tl_subcolumnsCallback', 'clipboardCopyAll');
 
+/**
+ * Einrücken von Elementen
+ */
+$GLOBALS['TL_WRAPPERS']['start'][] = 'colsetStart';
+$GLOBALS['TL_WRAPPERS']['start'][] = 'colsetPart';
+$GLOBALS['TL_WRAPPERS']['stop'][] = 'colsetPart';
+$GLOBALS['TL_WRAPPERS']['stop'][] = 'colsetEnd';
+
 
 /**
  * Spaltensets
