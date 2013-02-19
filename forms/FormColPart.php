@@ -67,17 +67,6 @@ class FormColPart extends \Widget
 		
 		if (TL_MODE == 'BE')
 		{
-            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
-            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
-
-            $arrColor = unserialize($this->fsc_color);
-
-            $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type];
-            $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
-            $blnInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
-
-            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type]);
-
             switch($this->fsc_sortid)
             {
                 case 1:
@@ -93,6 +82,29 @@ class FormColPart extends \Widget
                     $colID = $GLOBALS['TL_LANG']['MSC']['sc_fifth'];
                     break;
             }
+
+            $arrColor = unserialize($this->fsc_color);
+
+            if(!$GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'])
+            {
+                $this->Template = new \BackendTemplate('be_subcolumns');
+                $this->Template->setColor = $this->compileColor($arrColor);
+                $this->Template->colsetTitle = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ###';
+                #$this->Template->visualSet = $strMiniset;
+                $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
+
+                return $this->Template->parse();
+            }
+
+
+            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
+            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+
+            $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type];
+            $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
+            $blnInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+
+            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type]);
 
             $strMiniset = '<div class="colsetexample '.$strSCClass.'">';
 

@@ -53,10 +53,21 @@ class colsetStart extends \ContentElement
 
 		if (TL_MODE == 'BE')
 		{
-            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
-            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
 
             $arrColor = unserialize($this->sc_color);
+
+            if(!$GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'])
+            {
+                $this->Template = new \BackendTemplate('be_subcolumns');
+                $this->Template->setColor = $this->compileColor($arrColor);
+                $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
+                $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+
+                return $this->Template->parse();
+            }
+
+            $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
+            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
 
             $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
             $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];

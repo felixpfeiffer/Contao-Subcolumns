@@ -24,7 +24,7 @@ $GLOBALS['TL_LANG']['CTE']['colsetPart']['0'] = "Insieme-Colonne Elemento-parzia
 $GLOBALS['TL_LANG']['CTE']['colsetPart']['1'] = "Non puoi cambiare nessun'opzione dell'insieme delle colonne all'interno di questo content-element.<br /> IMPORTANTE: SE CANCELLI QUESTO CONTENT-ELEMENT, ANCHE GLI ALTRTI ELEMENTI COLLEGATI A QUESTO INSIEME COLONNE SARANNO CANCELLATI!!";
 $GLOBALS['TL_LANG']['CTE']['colsetEnd']['0'] = "Insieme-Colonne Elemento-finale";
 $GLOBALS['TL_LANG']['CTE']['colsetEnd']['1'] = "Non puoi cambiare nessun'opzione dell'insieme delle colonne all'interno di questo content-element.<br /> IMPORTANTE: SE CANCELLI QUESTO CONTENT-ELEMENT, ANCHE GLI ALTRTI ELEMENTI COLLEGATI A QUESTO INSIEME COLONNE SARANNO CANCELLATI!!";
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = "<img src=\"system/modules/Subcolumns/assets/down.gif\" alt=\"Beispiel für Spaltensets\" style=\"float:left;\" />Metti il contenuto della colonna %s dopo questo elemento.";
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = "Metti il contenuto della colonna %s dopo questo elemento.";
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = "primo";
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = "secondo";
 $GLOBALS['TL_LANG']['MSC']['sc_third'] = "terzo";

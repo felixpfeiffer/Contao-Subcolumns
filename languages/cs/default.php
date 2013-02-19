@@ -24,7 +24,7 @@ $GLOBALS['TL_LANG']['CTE']['colsetPart']['0'] = "Více sloupců - Část";
 $GLOBALS['TL_LANG']['CTE']['colsetPart']['1'] = "V této části nemůžete měnit nastavení sloupce.<br /> DŮLEŽITÉ: POKUD VYMAŽETE TENTO ELEMENT, VYMAŽETE TAKÉ ELEMENTY V PROPOJENÉM NASTAVENÍ SLOUPCŮ!";
 $GLOBALS['TL_LANG']['CTE']['colsetEnd']['0'] = "Více sloupců - Konec";
 $GLOBALS['TL_LANG']['CTE']['colsetEnd']['1'] = "V této části nemůžete měnit nastavení sloupce.<br /> DŮLEŽITÉ: POKUD VYMAŽETE TENTO ELEMENT, VYMAŽETE TAKÉ ELEMENTY V PROPOJENÉM NASTAVENÍ SLOUPCŮ!";
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = "<img src=\"system/modules/Subcolumns/assets/down.gif\" alt=\"Beispiel für Spaltensets\" style=\"float:left;\" />Place all content for the %s column after this element.";
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = "Place all content for the %s column after this element.";
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = "první";
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = "druhý";
 $GLOBALS['TL_LANG']['MSC']['sc_third'] = "třetí";

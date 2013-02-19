@@ -66,10 +66,19 @@ class FormColEnd extends \Widget
 		
 		if (TL_MODE == 'BE')
 		{
+            $arrColor = unserialize($this->fsc_color);
+
+            if(!$GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'])
+            {
+                $this->Template = new \BackendTemplate('be_subcolumns');
+                $this->Template->setColor = $this->compileColor($arrColor);
+                $this->Template->colsetTitle = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ###';
+
+                return $this->Template->parse();
+            }
+
             $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
             $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
-
-            $arrColor = unserialize($this->fsc_color);
 
             $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->fsc_type];
             $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];

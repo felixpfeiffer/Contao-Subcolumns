@@ -32,7 +32,7 @@ $GLOBALS['TL_LANG']['CTE']['colsetStart'] = array('Stĺpce - Začiatok','Začiat
 $GLOBALS['TL_LANG']['CTE']['colsetPart'] = array('Stĺpce - Predelovač','Nemá žiadne nastavenia, znázorňuje predelovač stĺpcov.<br />UPOZORNENIE: AK ZMAŽETE TENTO ELEMENT, ZMAŽÚ SA AJ VŠETKY OSTATNĚ ELEMENTY NALINKOVANÉ NA TENTO.');
 $GLOBALS['TL_LANG']['CTE']['colsetEnd'] = array('Stĺpce - Koniec','Nemá žiadne nastavenia, znázorňuje ukončenie stĺpcov.<br /> UPOZORNENIE: AK ZMAŽETE TENTO ELEMENT, ZMAŽÚ SA AJ VŠETKY OSTATNĚ ELEMENTY NALINKOVANÉ NA TENTO.');
 
-$GLOBALS['TL_LANG']['MSC']['contentAfter'] = '<img src="system/modules/Subcolumns/assets/down.gif" alt="" style="float:left;" />Vložte všetok obsah %s stĺpca za tento element.';
+$GLOBALS['TL_LANG']['MSC']['contentAfter'] = 'Vložte všetok obsah %s stĺpca za tento element.';
 
 $GLOBALS['TL_LANG']['MSC']['sc_first'] = 'prvého';
 $GLOBALS['TL_LANG']['MSC']['sc_second'] = 'druhého';
