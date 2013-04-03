@@ -82,7 +82,7 @@ class ModuleSubcolumns extends \Module
 		/**
 		 * CSS Code in das Pagelayout einfügen
 		 */
-		$mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+        $mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] : '';
 		$IEHacksCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] : false;
 		
 		$GLOBALS['TL_CSS']['subcolumns'] = $mainCSS;

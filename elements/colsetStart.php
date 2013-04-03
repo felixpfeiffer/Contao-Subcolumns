@@ -67,7 +67,7 @@ class colsetStart extends \ContentElement
             }
 
             $GLOBALS['TL_CSS']['subcolumns'] = 'system/modules/Subcolumns/assets/be_style.css';
-            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+            $GLOBALS['TL_CSS']['subcolumns_set'] = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] : false;
 
             $arrColset = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
             $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
@@ -75,15 +75,20 @@ class colsetStart extends \ContentElement
 
             $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
 
-            $strMiniset = '<div class="colsetexample '.$strSCClass.'">';
+            $strMiniset = '';
 
-            for($i=0;$i<$intCountContainers;$i++)
+            if($GLOBALS['TL_CSS']['subcolumns_set'])
             {
-                $arrPresentColset = $arrColset[$i];
-                $strMiniset .= '<div class="'.$arrPresentColset[0].($i==0 ? ' active' : '').'">'.($blnInside ? '<div class="'.$arrPresentColset[1].'">' : '').($i+1).($blnInside ? '</div>' : '').'</div>';
-            }
+                $strMiniset = '<div class="colsetexample '.$strSCClass.'">';
 
-            $strMiniset .= '</div>';
+                for($i=0;$i<$intCountContainers;$i++)
+                {
+                    $arrPresentColset = $arrColset[$i];
+                    $strMiniset .= '<div class="'.$arrPresentColset[0].($i==0 ? ' active' : '').'">'.($blnInside ? '<div class="'.$arrPresentColset[1].'">' : '').($i+1).($blnInside ? '</div>' : '').'</div>';
+                }
+
+                $strMiniset .= '</div>';
+            }
 
             $this->Template = new \BackendTemplate('be_subcolumns');
             $this->Template->setColor = $this->compileColor($arrColor);
@@ -107,7 +112,7 @@ class colsetStart extends \ContentElement
 		/**
 		 * CSS Code in das Pagelayout einfügen
 		 */
-		$mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'];
+		$mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] : '';
 		$IEHacksCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] : false;
 		
 		$GLOBALS['TL_CSS']['subcolumns'] = $mainCSS;

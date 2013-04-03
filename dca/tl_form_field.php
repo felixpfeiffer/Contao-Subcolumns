@@ -50,7 +50,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['list']['operations']['toggle']['button_call
 **/
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['__selector__'][] = 'fsc_gapuse';
 
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolstart'] = '{type_legend},type;{colsettings_legend},fsc_type,fsc_color,fsc_name,fsc_equalize,fsc_gapuse';
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolstart'] = '{type_legend},type;{colsettings_legend},fsc_type,fsc_color,fsc_name,fsc_equalize,fsc_gapuse;{expert_legend:hide},class';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolpart'] = '{type_legend},type;{colsettings_legend},fsc_type';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['formcolend'] = '{type_legend},type;{colsettings_legend},fsc_type';
 

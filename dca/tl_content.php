@@ -134,14 +134,14 @@ $GLOBALS['TL_DCA']['tl_content']['config']['oncopy_callback'][] = array('tl_cont
 /**
  * Operations
 **/
-/*$arrModules = $this->Config->getActiveModules();
+$arrModules = $this->Config->getActiveModules();
 if(!in_array('ce-access',$arrModules))
 {
 	$GLOBALS['TL_DCA']['tl_content']['list']['operations']['edit']['button_callback'] = array('tl_content_sc','showEditOperation'); 
 	$GLOBALS['TL_DCA']['tl_content']['list']['operations']['copy']['button_callback'] = array('tl_content_sc','showCopyOperation'); 
 	#$GLOBALS['TL_DCA']['tl_content']['list']['operations']['delete']['button_callback'] = array('tl_content_sc','showDeleteOperation'); 
 	#$GLOBALS['TL_DCA']['tl_content']['list']['operations']['toggle']['button_callback'] = array('tl_content_sc','toggleIcons'); 
-} */
+}
 
 
 /**
