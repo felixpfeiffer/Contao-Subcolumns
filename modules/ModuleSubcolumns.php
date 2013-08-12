@@ -170,7 +170,7 @@ class ModuleSubcolumns extends \Module
 		$this->Template->intCols = count($arrSet);
 		$this->Template->inside = $container[0][1];
 		$this->Template->arrSet = $arrSet;
-		$this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . $l;
+		$this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . $l  . ' ' . $this->strSet . ' col-' . $this->sc_type;
 		$this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 		
 	}
