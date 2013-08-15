@@ -39,7 +39,7 @@ Linux
  * Epiphany 1.4.8+
  * Lynx (Textbrowser)
 
-Betriebssytem übergreifend
+All
  * Firefox 1.0+
  * Mozilla Suite 1.7.1+
  * SeaMonkey 1.0+

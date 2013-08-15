@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
@@ -39,14 +39,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_name'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_name'],
 	'inputType'	=> 'text',
 	'save_callback' => array(array('tl_content_sc','setColsetName')),
-	'eval'		=> array('maxlength'=>'255','unique'=>true,'spaceToUnderscore'=>true)		
+	'eval'		=> array('maxlength'=>'255','unique'=>true,'spaceToUnderscore'=>true),
+    'sql'       => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gap'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_gap'],
 	'inputType'	=> 'text',
-	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50')		
+	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50'),
+    'sql'       => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_type'] = array
@@ -54,7 +56,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_type'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_type'],
 	'inputType'	=> 'select',
 	'options_callback'=> array('tl_content_sc','getAllTypes'),
-	'eval'		=> array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50')		
+	'eval'		=> array('includeBlankOption'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
+    'sql'       => "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gapdefault'] = array
@@ -62,14 +65,42 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gapdefault'] = array
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_gapdefault'],
 	'default'	=> 1,
 	'inputType'	=> 'checkbox',
-	'eval'		=> array('tl_class'=>'clr m12 w50')
+	'eval'		=> array('tl_class'=>'clr m12 w50'),
+    'sql'       => "char(1) NOT NULL default '1'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_equalize'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_equalize'],
 	'inputType'	=> 'checkbox',
-	'eval'		=> array()		
+	'eval'		=> array(),
+    'sql'       => "char(1) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_color'] = array
+(
+	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_color'],
+    'inputType' => 'text',
+    'eval'      => array('maxlength'=>6, 'multiple'=>true, 'size'=>2, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w50 wizard'),
+    'sql'       => "varchar(64) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
+(
+    'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_parent'],
+    'sql'       => "int(10) unsigned NOT NULL default '0'"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_childs'] = array
+(
+    'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_childs'],
+    'sql'       => "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['sc_sortid'] = array
+(
+    'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_sortid'],
+    'sql'       => "int(2) unsigned NOT NULL default '0'"
 );
 
 /* Extend existing fields with additional functionality */
@@ -78,7 +109,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['invisible']['save_callback'][] = arr
 
 /* hidden fields */
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
+/*$GLOBALS['TL_DCA']['tl_content']['fields']['sc_parent'] = array
 (
 	'inputType'	=> 'text',	
 );
@@ -89,7 +120,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_childs'] = array
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_sortid'] = array
 (
 	'inputType'	=> 'text',	
-);
+); */
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['colsetPart'] = 'cssID';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['colsetEnd'] = $GLOBALS['TL_DCA']['tl_content']['palettes']['default'];
@@ -138,7 +169,7 @@ class tl_content_sc extends tl_content
 		$strGap = $GLOBALS['TL_SUBCL'][$strSet]['gap'] ? ',sc_gapdefault,sc_gap' : '';
 		$strEquilize = $GLOBALS['TL_SUBCL'][$strSet]['equalize'] ? '{colheight_legend:hide},sc_equalize;' : '';
 			
-		$GLOBALS['TL_DCA']['tl_content']['palettes']['colsetStart'] = '{type_legend},type;{colset_legend},sc_name,sc_type'.$strGap.';'.$strEquilize.'{protected_legend:hide},protected;{expert_legend:hide},guests,invisible,cssID,space';
+		$GLOBALS['TL_DCA']['tl_content']['palettes']['colsetStart'] = '{type_legend},type;{colset_legend},sc_name,sc_type,sc_color'.$strGap.';'.$strEquilize.'{protected_legend:hide},protected;{expert_legend:hide},guests,invisible,cssID,space';
 		
 	}
 	
@@ -194,9 +225,10 @@ class tl_content_sc extends tl_content
 		if($arrChilds=='')
 		{
 			$arrChilds = array();
-			$this->moveRows($objElement->pid,$objElement->sorting,128 * ( count($arrColset) + 1 ));
+			$this->moveRows($objElement->pid,$objElement->ptable,$objElement->sorting,128 * ( count($arrColset) + 1 ));
 			
 			$arrSet = array('pid' => $objElement->pid,
+                            'ptable' => $objElement->ptable,
 							'tstamp' => time(),
 							'sorting'=>0,
 							'type' => 'colsetPart',
@@ -205,7 +237,8 @@ class tl_content_sc extends tl_content
 							'sc_parent'=>$objElement->id,
 							'sc_sortid'=>0,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 
             if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
@@ -261,8 +294,9 @@ class tl_content_sc extends tl_content
 								'sc_gap' => $objElement->sc_gap,
 								'sc_gapdefault' => $objElement->sc_gapdefault,
 								'sc_sortid' => $i,
-								'sc_name' => $objElement->sc_name.'-Part-'.($i++)
-								
+								'sc_name' => $objElement->sc_name.'-Part-'.($i++),
+								'sc_color' => $objElement->sc_color
+
 				);
 				
 				$this->Database->prepare("UPDATE tl_content %s WHERE id=".$v)
@@ -274,7 +308,8 @@ class tl_content_sc extends tl_content
 							'sc_type'=>$sc_type,
 							'sc_gap' => $objElement->sc_gap,
 							'sc_sortid' => $i,
-							'sc_name' => $objElement->sc_name.'-End'
+							'sc_name' => $objElement->sc_name.'-End',
+                            'sc_color' => $objElement->sc_color
 			);
 			
 			$this->Database->prepare("UPDATE tl_content %s WHERE id=".$intLastElement)
@@ -309,7 +344,8 @@ class tl_content_sc extends tl_content
 			$arrSet = array(
 							'sc_type'=>$sc_type,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 			
 			foreach($arrChilds as $value)
@@ -342,7 +378,7 @@ class tl_content_sc extends tl_content
 			
 			$objEnd = $this->Database->prepare("SELECT id,sorting,sc_sortid FROM tl_content WHERE id=?")->execute($arrChilds[count($arrChilds)-1]);
 			
-			$this->moveRows($objElement->pid,$objEnd->sorting,64 * ( $intDiff) );
+			$this->moveRows($objElement->pid,$objElement->ptable,$objEnd->sorting,64 * ( $intDiff) );
 			
 			/*  Den Typ des letzten Elements auf End-ELement umsetzen und SC-namen anpassen */
 			$intChildId	= count($arrChilds);
@@ -360,14 +396,16 @@ class tl_content_sc extends tl_content
 			
 			$arrSet = array('type' => 'colsetPart',
 							'pid' => $objElement->pid,
+                            'ptable' => $objElement->ptable,
 							'tstamp' => time(),
 							'sorting' => 0,
 							'sc_name' => '',
 							'sc_type'=>$sc_type,
-							'sc_parent' => $dc->id,
+							'sc_parent' => $objElement->id,
 							'sc_sortid' => 0,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 
             if(in_array('GlobalContentelements',$this->Config->getActiveModules()))
@@ -405,7 +443,8 @@ class tl_content_sc extends tl_content
 			$arrData = array(
 							'sc_type'=>$sc_type,
 							'sc_gap' => $objElement->sc_gap,
-							'sc_gapdefault' => $objElement->sc_gapdefault
+							'sc_gapdefault' => $objElement->sc_gapdefault,
+							'sc_color' => $objElement->sc_color
 							);
 			
 			foreach($arrChilds as $value)
@@ -516,10 +555,10 @@ class tl_content_sc extends tl_content
 		
 	}
 	
-	private function moveRows($pid,$sorting,$ammount=128)
+	private function moveRows($pid,$ptable,$sorting,$ammount=128)
 	{
-		$this->Database->prepare("UPDATE tl_content SET sorting = sorting + ? WHERE pid=? AND sorting > ?")
-									->execute($ammount,$pid,$sorting);
+		$this->Database->prepare("UPDATE tl_content SET sorting = sorting + ? WHERE pid=? AND ptable=? AND sorting > ?")
+									->execute($ammount,$pid,$ptable,$sorting);
 		
 		
 	}
@@ -680,10 +719,10 @@ class tl_content_sc extends tl_content
 					'sc_childs' => $arrChilds
 				);
 				
-				$this->Database->prepare("UPDATE tl_content %s WHERE sc_parent=?")
+				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
 											->set($arrSet)
 											->execute($intNewParent);
-				
+
 				
 			
 			}

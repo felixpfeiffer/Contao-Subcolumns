@@ -1,0 +1,8 @@
+
+<?php if ($this->colsetTitle): ?>
+<h1 style="color:<?php echo $this->setColor; ?>;"><?php echo $this->colsetTitle; ?></h1>
+<?php endif; ?>
+<div class="tl_gray">
+    <?php echo $this->visualSet; ?><span class="sc_hint"><?php echo $this->hint; ?></span>
+
+</div>

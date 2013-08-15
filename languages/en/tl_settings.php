@@ -26,6 +26,7 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_settings']['subcolumns_altcss'] = array('Use original YAML files', 'If you use the YAML framework, you should check this option, as the subcolumns CE loads an edited css file that holds only the additional column widths.');
+$GLOBALS['TL_LANG']['tl_settings']['subcolumns_gapdefault'] = array('Columnsset default gap', 'Define a default for all columnsets on the page.');
 
 /**
  * Legends

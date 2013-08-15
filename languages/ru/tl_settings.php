@@ -1,6 +1,6 @@
 <?php
 /**
- * TL_ROOT/system/modules/subcolumns/languages/ru/tl_settings.php 
+ * TL_ROOT/system/modules/Subcolumns/languages/ru/tl_settings.php 
  * 
  * TYPOlight extension: subcolumns 1.1.1 stable 
  * Russian translation file 

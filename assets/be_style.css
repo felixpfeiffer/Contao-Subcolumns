@@ -1,0 +1,26 @@
+.colsetexample {
+    width: 140px !important;
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    float: left;
+    margin-right: 1em !important;
+}
+.colsetexample > div > div {
+    background-color: #fff;
+    margin: 2px;
+    text-align: center;
+    padding: 3px;
+    border: 1px dashed #cccccc;
+    line-height: 2em;
+}
+.colsetexample > div.active > div {
+    background-color: #8ab858;
+}
+.colsetexample.final > div > div {
+    background-color: #ff2222;
+    color: #FFF;
+}
+
+.sc_hint {
+    line-height: 3em;
+}

@@ -28,9 +28,8 @@
  * @filesource
  */
 
-
 /**
- * Front end modules
+ * Frontend modules
  */
 $GLOBALS['TL_LANG']['FMD']['subcolumns'] = array('Spaltenset', 'Ordnen Sie mehrere Module in mehreren Spalten an. Die Zuweisung erfolgt wie im Seitenlayout.');
 

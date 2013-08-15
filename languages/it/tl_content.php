@@ -1,6 +1,6 @@
 <?php
 /**
- * TL_ROOT/system/modules/subcolumns/languages/it/tl_content.php 
+ * TL_ROOT/system/modules/Subcolumns/languages/it/tl_content.php 
  * 
  * Contao extension: subcolumns 1.2.1 stable 
  * Italian translation file 

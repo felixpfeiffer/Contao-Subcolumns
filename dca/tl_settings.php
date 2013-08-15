@@ -35,9 +35,17 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['subcolumns'] = array
 	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['subcolumns'],
 	'inputType'               => 'select',
 	'options_callback'		  => array('tl_subcolumnsCallback','getSets'),
-	'eval'                    => array()
+	'eval'                    => array('tl_class'=>'w50')
 );
-		
-$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{subcolumns_legend:hide},subcolumns';
+
+$GLOBALS['TL_DCA']['tl_settings']['fields']['subcolumns_gapdefault'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['subcolumns_gapdefault'],
+    'default'                 => 12,
+	'inputType'               => 'text',
+	'eval'                    => array('tl_class'=>'w50')
+);
+
+$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{subcolumns_legend:hide},subcolumns,subcolumns_gapdefault;';
 
 ?>
