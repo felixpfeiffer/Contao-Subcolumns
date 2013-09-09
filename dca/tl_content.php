@@ -46,6 +46,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['sc_name'] = array
 $GLOBALS['TL_DCA']['tl_content']['fields']['sc_gap'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_content']['sc_gap'],
+    'default'   => ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] != '' ? $GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] : 0),
 	'inputType'	=> 'text',
 	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50'),
     'sql'       => "varchar(255) NOT NULL default ''"

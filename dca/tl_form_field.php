@@ -92,6 +92,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['fsc_gap'] = array(
 	'label'		=> &$GLOBALS['TL_LANG']['tl_form_field']['fsc_gap'],
 	'exclude'	=> true,
 	'inputType'	=> 'text',
+    'default'   => ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] != '' ? $GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] : 0),
 	'eval'		=> array('maxlength'=>'4','regxp'=>'digit'),
     'sql'               => "varchar(255) NOT NULL default ''"
 );

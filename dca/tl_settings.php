@@ -41,7 +41,6 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['subcolumns'] = array
 $GLOBALS['TL_DCA']['tl_settings']['fields']['subcolumns_gapdefault'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['subcolumns_gapdefault'],
-    'default'                 => 12,
 	'inputType'               => 'text',
 	'eval'                    => array('tl_class'=>'w50')
 );
