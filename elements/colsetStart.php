@@ -121,7 +121,9 @@ class colsetStart extends \ContentElement
 		$container = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
 		$useGap = $GLOBALS['TL_SUBCL'][$this->strSet]['gap'];
 		$equalize = $GLOBALS['TL_SUBCL'][$this->strSet]['equalize'] && $this->sc_equalize ? $GLOBALS['TL_SUBCL'][$this->strSet]['equalize'] . ' ' : '';
-		
+
+        $blnUseInner = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+
 		if($this->sc_gapdefault == 1 && $useGap)
 		{
 			$gap_value = $this->sc_gap != "" ? $this->sc_gap : ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] ? $GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] : 12);
@@ -145,9 +147,13 @@ class colsetStart extends \ContentElement
 				$this->Template->gap = array('right'=>ceil(0.8*$gap_value).$gap_unit);
 			}
 		}
+        else
+        {
+            $blnUseInner = false;
+        }
 		
 		#$container = unserialize($this->sc_container);
-        $this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+        $this->Template->useInside = $blnUseInner;
         $this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . count($container) . ' ' . $this->strSet . ' col-' . $this->sc_type;
 		$this->Template->column = $container[0][0] . ' col_1' . ' first';
 		$this->Template->inside = $this->Template->useInside ? $container[0][1] : '';

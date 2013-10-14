@@ -102,7 +102,15 @@ class colsetEnd extends \ContentElement
 	 */
 	protected function compile()
 	{
-		$this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+        $useGap = $GLOBALS['TL_SUBCL'][$this->strSet]['gap'];
+        $blnUseInner = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+
+        if($this->sc_gapdefault != 1 && !$useGap)
+        {
+            $blnUseInner = false;
+        }
+
+        $this->Template->useInside = $blnUseInner;
 	}
 
     /**

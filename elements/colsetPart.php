@@ -121,8 +121,10 @@ class colsetPart extends \ContentElement
 	{
 		$arrCounts = array('1'=>'second','2'=>'third','3'=>'fourth','4'=>'fifth');
 		$container = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
+        $useGap = $GLOBALS['TL_SUBCL'][$this->strSet]['gap'];
+        $blnUseInner = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 		
-		if($this->sc_gapdefault == 1)
+		if($this->sc_gapdefault == 1 && $useGap)
 		{
             $gap_value = $this->sc_gap != "" ? $this->sc_gap : ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] ? $GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] : 12);
 			$gap_unit = 'px';
@@ -177,9 +179,13 @@ class colsetPart extends \ContentElement
 				}
 			}
 		}
+        else
+        {
+            $blnUseInner = false;
+        }
 
         $this->Template->colID = $arrCounts[$this->sc_sortid];
-        $this->Template->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
+        $this->Template->useInside = $blnUseInner;
 		$this->Template->column = $container[$this->sc_sortid][0] . ' col_' . ($this->sc_sortid+1) . (($this->sc_sortid == count($container)-1) ? ' last' : '');
 		$this->Template->inside = $this->Template->useInside ? $container[$this->sc_sortid][1] : '';
 
