@@ -1,0 +1,38 @@
+{
+	"name":"felixpfeiffer/subcolumns",
+	"description":"Subcolumns to seperate an article in several columns",
+	"keywords":["columns","yaml","grid","subcolumns"],
+	"type":"contao-module",
+	"homepage":"http://www.felixpfeiffer.com/",
+	"license":"LGPL-3.0+",
+	"authors":[
+		{
+			"name":"Felix Pfeiffer",
+			"homepage":"http://www.felixpfeiffer.com/",
+			"role":"Developer"
+		}
+	],
+	"support":{
+		"issues":"https://github.com/felixpfeiffer/Subcolumns/issues",
+		"source":"https://github.com/felixpfeiffer/Subcolumns/"
+	},
+	"require":{
+		"php":">=5.3",
+		"contao/core":">=3,<4",
+		"contao-community-alliance/composer-installer":"*",
+		"menatwork/contao-multicolumnwizard":"3.2.*"
+	},
+	"autoload":{
+		"classmap":[""]
+	},
+	"replace":{
+		"contao-legacy/subcolumns":"*"
+	},
+	"extra":{
+		"contao":{
+			"sources":{
+				"":"system/modules/Subcolumns"
+			}
+		}
+	}
+}
