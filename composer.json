@@ -13,8 +13,8 @@
 		}
 	],
 	"support":{
-		"issues":"https://github.com/felixpfeiffer/Subcolumns/issues",
-		"source":"https://github.com/felixpfeiffer/Subcolumns/"
+		"issues":"https://github.com/felixpfeiffer/Contao-Subcolumns/issues",
+		"source":"https://github.com/felixpfeiffer/Contao-Subcolumns/"
 	},
 	"require":{
 		"php":">=5.3",
