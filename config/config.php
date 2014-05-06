@@ -58,7 +58,7 @@ $GLOBALS['TL_HOOKS']['clipboardCopyAll'][] = array('tl_subcolumnsCallback', 'cli
  * Einrücken von Elementen
  */
 $GLOBALS['TL_WRAPPERS']['start'][] = 'colsetStart';
-$GLOBALS['TL_WRAPPERS']['seperator'][] = 'colsetPart';
+$GLOBALS['TL_WRAPPERS']['separator'][] = 'colsetPart';
 $GLOBALS['TL_WRAPPERS']['stop'][] = 'colsetEnd';
 
 
