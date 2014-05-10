@@ -172,7 +172,7 @@ class tl_form_subcols extends tl_form_field
 	 * @param object
 	 * @return string
 	 */
-	public function scWrite(DC_Table $dc)
+	public function scWrite(DataContainer $dc)
 	{
 		
 		if($dc->activeRecord->type != 'formcolstart' || $dc->activeRecord->fsc_type == "") return '';
@@ -443,7 +443,7 @@ class tl_form_subcols extends tl_form_field
 		
 	}
 	
-	public function scDelete(DC_Table $dc)
+	public function scDelete(DataContainer $dc)
 	{
 		if($dc->activeRecord->type != 'formcolstart' || $dc->activeRecord->fsc_childs == '') return '';
 		
@@ -503,7 +503,6 @@ class tl_form_subcols extends tl_form_field
 	/* Kopier-Icon für Trenn- und Endelemente ausblenden */
 	public function toggleIcons($arrRow, $href, $label, $title, $icon, $attributes, $strTable, $arrRootIds, $arrChildRecordIds, $blnCircularReference, $strPrevious, $strNext)
 	{
-	
 		if($arrRow['type'] != 'formcolpart' && $arrRow['type'] != 'formcolend')
 		{
 			return parent::toggleIcon($arrRow, $href, $label, $title, $icon, $attributes);

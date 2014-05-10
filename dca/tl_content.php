@@ -199,7 +199,7 @@ class tl_content_sc extends tl_content
 	 * Write the other Sets
 	 * @param object
 	 */
-	public function scUpdate(DC_Table $dc)
+	public function scUpdate(DataContainer $dc)
 	{
 		
 		if($dc->activeRecord->type != 'colsetStart' || $dc->activeRecord->sc_type == "") return '';
@@ -488,7 +488,7 @@ class tl_content_sc extends tl_content
 	 * @param object
 	 * @return string
 	 */
-	public function setElementProperties(DC_Table $dc)
+	public function setElementProperties(DataContainer $dc)
 	{
 	
 		if($dc->activeRecord->type != 'colsetStart' || $dc->activeRecord->sc_type == "") return '';
@@ -506,7 +506,7 @@ class tl_content_sc extends tl_content
 	
 	}
 	
-	public function scDelete(DC_Table $dc)
+	public function scDelete(DataContainer $dc)
 	{
 		
 		$delRecord = $this->Database->prepare("SELECT * FROM tl_content WHERE id=?")
