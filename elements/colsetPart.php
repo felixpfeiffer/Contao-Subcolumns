@@ -24,7 +24,7 @@ namespace FelixPfeiffer\Subcolumns;
 /**
  * Class colsetPart 
  *
- * @copyright  Felix Pfeiffer : Neue Medien 2010
+ * @copyright  Felix Pfeiffer : Neue Medien 2007 - 2014
  * @author     Felix Pfeiffer <info@felixpfeiffer.com>
  * @package    Subcolumns
  */
