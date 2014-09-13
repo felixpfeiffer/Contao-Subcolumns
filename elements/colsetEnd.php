@@ -105,7 +105,7 @@ class colsetEnd extends \ContentElement
         $useGap = $GLOBALS['TL_SUBCL'][$this->strSet]['gap'];
         $blnUseInner = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 
-        if($this->sc_gapdefault != 1 && !$useGap)
+        if($this->sc_gapdefault != 1 || !$useGap)
         {
             $blnUseInner = false;
         }
