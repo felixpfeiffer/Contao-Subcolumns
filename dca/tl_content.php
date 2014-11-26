@@ -615,8 +615,14 @@ class tl_content_sc extends tl_content
 	/* Toggle-Status auf Trenn und End-elemente anwenden */
 	public function toggleAdditionalElements($varValue,$dc)
 	{
-		$objEntry = $this->Database->prepare("UPDATE tl_content SET tstamp=". time() .", invisible='" . ( $varValue ? 1 : '') . "' WHERE sc_parent=? AND type!=?")->execute($dc->id,'colsetStart');
-		
+
+		if($dc->id != 0)
+		{
+			$objEntry = $this->Database->prepare("UPDATE tl_content SET tstamp=". time() .", invisible='" . ( $varValue ? 1 : '') . "' WHERE sc_parent=? AND type!=?")->execute($dc->id,'colsetStart');
+
+			return $varValue;
+		}
+
 		return $varValue;
 	
 	}
