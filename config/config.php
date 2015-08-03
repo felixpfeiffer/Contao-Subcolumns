@@ -74,7 +74,7 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' 	=> true, // Are inside containers used?
 		'gap' 		=> true, // A gap between the columns can be entered in backend
 		'files' 	=> array( // Enter the location of the css files
-			'css'		=> 'system/modules/Subcolumns/assets/yaml3/subcols.css|static',
+			'css'		=> 'system/modules/Subcolumns/assets/yaml3/subcols.css||static',
 			'ie'		=> 'system/modules/Subcolumns/assets/yaml3/subcolsIEHacks.css'
 		), 
 		/*
@@ -123,7 +123,7 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' 	=> true,
 		'gap' 		=> true,
 		'files' 	=> array(
-			'css'		=> 'system/modules/Subcolumns/assets/yaml3/subcols_extended.css|static',
+			'css'		=> 'system/modules/Subcolumns/assets/yaml3/subcols_extended.css||static',
 			'ie'		=> 'system/modules/Subcolumns/assets/yaml3/subcolsIEHacks_extended.css'
 		),
 		'sets'		=> array(
@@ -166,7 +166,7 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' => true,
 		'gap' => true,
 		'files' => array(
-			'css'		=> 'system/modules/Subcolumns/assets/yaml4/subcols.css|static',
+			'css'		=> 'system/modules/Subcolumns/assets/yaml4/subcols.css||static',
 			'ie'		=> 'system/modules/Subcolumns/assets/yaml4/subcolsIEHacks.css'
 		),
 		'sets'=> array(
@@ -206,7 +206,7 @@ $GLOBALS['TL_SUBCL'] = array(
 		'inside' => true,
 		'gap' => true,
 		'files' => array(
-			'css'		=> 'system/modules/Subcolumns/assets/yaml4/subcols_extended.css|static'
+			'css'		=> 'system/modules/Subcolumns/assets/yaml4/subcols_extended.css||static'
 		),
 		'sets'=> array(
             '20x20x20x20x20' => array(array('ym-g20 ym-gl','ym-gbox-left'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gl','ym-gbox'),array('ym-g20 ym-gr','ym-gbox-right')),
