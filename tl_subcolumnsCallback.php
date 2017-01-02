@@ -139,7 +139,7 @@ class tl_subcolumnsCallback extends Backend
 											    ->limit(1)
 												->execute($oldChilds[0]);
 				
-				$newChilds = $this->Database->prepare("SELECT id,type FROM tl_content WHERE pid=? AND sc_parent=? AND type != 'colsetStart'")
+				$newChilds = $this->Database->prepare("SELECT id,type FROM tl_content WHERE pid=? AND sc_parent=? AND type != 'colsetStart' ORDER BY sorting")
 												->execute($pid,$oldChildParent->sc_parent);
 				$i=1;
 				while($newChilds->next())
