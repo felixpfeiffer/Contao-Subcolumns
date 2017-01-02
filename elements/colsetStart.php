@@ -62,6 +62,8 @@ class colsetStart extends \ContentElement
                 $this->Template->setColor = $this->compileColor($arrColor);
                 $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
                 $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+                $this->Template->countCols = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+                $this->Template->currentCol = $this->sc_sortid + 1;
 
                 return $this->Template->parse();
             }
@@ -95,6 +97,8 @@ class colsetStart extends \ContentElement
             $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
             $this->Template->visualSet = $strMiniset;
             $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+            $this->Template->countCols = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+            $this->Template->currentCol = $this->sc_sortid + 1;
 
             return $this->Template->parse();
 

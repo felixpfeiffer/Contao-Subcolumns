@@ -60,6 +60,8 @@ class colsetEnd extends \ContentElement
                 $this->Template = new \BackendTemplate('be_subcolumns');
                 $this->Template->setColor = $this->compileColor($arrColor);
                 $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
+                $this->Template->countCols = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+                $this->Template->currentCol = $this->sc_sortid + 1;
 
                 return $this->Template->parse();
             }
@@ -89,6 +91,8 @@ class colsetEnd extends \ContentElement
             $this->Template->setColor = $this->compileColor($arrColor);
             $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
             $this->Template->visualSet = $strMiniset;
+            $this->Template->countCols = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+            $this->Template->currentCol = $this->sc_sortid + 1;
 
             return $this->Template->parse();
 		}
