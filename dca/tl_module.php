@@ -77,7 +77,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sc_gap'] = array
 (
 	'label'		=> &$GLOBALS['TL_LANG']['tl_module']['sc_gap'],
 	'inputType'	=> 'text',
-    'default'   => ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] != '' ? $GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] : 0),
+    'default'   => ($GLOBALS['TL_CONFIG']['subcolumns_gapdefault'] ?? 0),
 	'eval'		=> array('maxlength'=>'4','regxp'=>'digit', 'tl_class'=>'w50'),
     'sql'       => "varchar(255) NOT NULL default ''"
 );
@@ -112,7 +112,7 @@ class tl_module_sc extends tl_module
 		$strSet = $GLOBALS['TL_CONFIG']['subcolumns'] ? $GLOBALS['TL_CONFIG']['subcolumns'] : 'yaml3';
 			
 		$strGap = $GLOBALS['TL_SUBCL'][$strSet]['gap'] ? ',sc_gapdefault,sc_gap' : false;
-		$strEquilize = $GLOBALS['TL_SUBCL'][$strSet]['equalize'] ? ',sc_equalize;' : false;
+		$strEquilize = isset($GLOBALS['TL_SUBCL'][$strSet]['equalize']) && $GLOBALS['TL_SUBCL'][$strSet]['equalize'] ? ',sc_equalize;' : false;
 		
 		$GLOBALS['TL_DCA']['tl_module']['palettes']['subcolumns'] = '{title_legend},name,headline,type;{subcolumns_legend},sc_type,sc_modules;'.($strGap || $strEquilize ? '{subcolumns_settings_legend}'.$strGap.$strEquilize.';':'').'{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 	}
