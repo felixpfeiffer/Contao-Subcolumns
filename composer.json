@@ -1,5 +1,5 @@
 {
-	"name":"felixpfeiffer/subcolumns",
+	"name":"heimrichhannot/subcolumns",
 	"description":"Subcolumns to seperate an article in several columns",
 	"keywords":["columns","yaml","grid","subcolumns"],
 	"type":"contao-module",
