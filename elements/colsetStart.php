@@ -22,6 +22,9 @@
 namespace FelixPfeiffer\Subcolumns;
 
 
+use Contao\BackendTemplate;
+use Contao\ContentElement;
+
 /**
  * Class colsetStart 
  *
@@ -29,7 +32,7 @@ namespace FelixPfeiffer\Subcolumns;
  * @author     Felix Pfeiffer <info@felixpfeiffer.com>
  * @package    Subcolumns
  */
-class colsetStart extends \ContentElement
+class colsetStart extends ContentElement
 {
 
 	/**
@@ -54,14 +57,14 @@ class colsetStart extends \ContentElement
 		if (TL_MODE == 'BE')
 		{
 
-            $arrColor = unserialize($this->sc_color);
+            $arrColor = \unserialize($this->sc_color);
 
             if(!$GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'])
             {
-                $this->Template = new \BackendTemplate('be_subcolumns');
+                $this->Template = new BackendTemplate('be_subcolumns');
                 $this->Template->setColor = $this->compileColor($arrColor);
                 $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
-                $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+                $this->Template->hint = \sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 
                 return $this->Template->parse();
             }
@@ -73,7 +76,7 @@ class colsetStart extends \ContentElement
             $strSCClass = $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'];
             $blnInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 
-            $intCountContainers = count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
+            $intCountContainers = \count($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type]);
 
             $strMiniset = '';
 
@@ -90,11 +93,11 @@ class colsetStart extends \ContentElement
                 $strMiniset .= '</div>';
             }
 
-            $this->Template = new \BackendTemplate('be_subcolumns');
+            $this->Template = new BackendTemplate('be_subcolumns');
             $this->Template->setColor = $this->compileColor($arrColor);
             $this->Template->colsetTitle = '### COLUMNSET START '.$this->sc_type.' <strong>'.$this->sc_name.'</strong> ###';
             $this->Template->visualSet = $strMiniset;
-            $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
+            $this->Template->hint = \sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
 
             return $this->Template->parse();
 
@@ -109,6 +112,14 @@ class colsetStart extends \ContentElement
 	 */
 	protected function compile()
 	{
+        if (!isset($GLOBALS['TL_SUBCL'][$this->strSet])) {
+            throw new \Exception(
+                "The requested column set type could not be found. "
+                ."Type '".$this->strSet."' was requested, but no such type is defined. "
+                ."Maybe your configuration is not correct?"
+            );
+        }
+
 		/**
 		 * CSS Code in das Pagelayout einfügen
 		 */
@@ -117,7 +128,10 @@ class colsetStart extends \ContentElement
 
         if($mainCSS) $GLOBALS['TL_CSS']['subcolumns'] = $mainCSS;
 		if($IEHacksCSS) $GLOBALS['TL_HEAD']['subcolumns'] = '<!--[if lte IE 7]><link href="'.$IEHacksCSS.'" rel="stylesheet" type="text/css" /><![endif]--> ';
-		
+
+        if (!isset($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type])) {
+            throw new \Exception("The requested column type could not be found. ".$this->sc_type." was requested, but no such type is defined in ".$this->strSet.".");
+        }
 		$container = $GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type];
 		$useGap = $GLOBALS['TL_SUBCL'][$this->strSet]['gap'];
 		$equalize = $GLOBALS['TL_SUBCL'][$this->strSet]['equalize'] && $this->sc_equalize ? $GLOBALS['TL_SUBCL'][$this->strSet]['equalize'] . ' ' : '';
@@ -131,20 +145,20 @@ class colsetStart extends \ContentElement
 			
 			if(count($container) == 2)
 			{
-				$this->Template->gap = array('right'=>ceil(0.5*$gap_value).$gap_unit);
+				$this->Template->gap = array('right'=>\ceil(0.5*$gap_value).$gap_unit);
 			}
 			elseif (count($container) == 3)
 			{
-				$this->Template->gap = array('right'=>ceil(0.666*$gap_value).$gap_unit);
+				$this->Template->gap = array('right'=>\ceil(0.666*$gap_value).$gap_unit);
 
 			}
 			elseif (count($container) == 4)
 			{
-				$this->Template->gap = array('right'=>ceil(0.75*$gap_value).$gap_unit);
+				$this->Template->gap = array('right'=>\ceil(0.75*$gap_value).$gap_unit);
 			}
 			elseif (count($container) == 5)
 			{
-				$this->Template->gap = array('right'=>ceil(0.8*$gap_value).$gap_unit);
+				$this->Template->gap = array('right'=>\ceil(0.8*$gap_value).$gap_unit);
 			}
 		}
         else
@@ -154,7 +168,8 @@ class colsetStart extends \ContentElement
 		
 		#$container = unserialize($this->sc_container);
         $this->Template->useInside = $blnUseInner;
-        $this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . count($container) . ' ' . $this->strSet . ' col-' . $this->sc_type;
+
+        $this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . \count($container) . ' ' . $this->strSet . ' col-' . $this->sc_type;
 		$this->Template->column = $container[0][0] . ' col_1' . ' first';
 		$this->Template->inside = $this->Template->useInside ? $container[0][1] : '';
 
