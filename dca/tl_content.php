@@ -168,7 +168,7 @@ class tl_content_sc extends tl_content
 		$strSet = $GLOBALS['TL_CONFIG']['subcolumns'] ? $GLOBALS['TL_CONFIG']['subcolumns'] : 'yaml3';
 			
 		$strGap = $GLOBALS['TL_SUBCL'][$strSet]['gap'] ? ',sc_gapdefault,sc_gap' : '';
-		$strEquilize = $GLOBALS['TL_SUBCL'][$strSet]['equalize'] ? '{colheight_legend:hide},sc_equalize;' : '';
+		$strEquilize = isset($GLOBALS['TL_SUBCL'][$strSet]['equalize']) && $GLOBALS['TL_SUBCL'][$strSet]['equalize']  ? '{colheight_legend:hide},sc_equalize;' : '';
 			
 		$GLOBALS['TL_DCA']['tl_content']['palettes']['colsetStart'] = '{type_legend},type;{colset_legend},sc_name,sc_type,sc_color'.$strGap.';'.$strEquilize.'{protected_legend:hide},protected;{expert_legend:hide},guests,invisible,cssID,space';
 		
