@@ -68,6 +68,12 @@ class FormColStart extends \Widget
 		{
             $arrColor = unserialize($this->fsc_color);
 
+            if(count($arrColor) === 2 && empty($arrColor[1])) {
+                $arrColor = '';
+            } else {
+                $arrColor  = $this->compileColor($arrColor);
+            }
+
             if(!$GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'])
             {
                 $this->Template = new \BackendTemplate('be_subcolumns');
@@ -103,7 +109,7 @@ class FormColStart extends \Widget
             }
 
             $this->Template = new \BackendTemplate('be_subcolumns');
-            $this->Template->setColor = $this->compileColor($arrColor);
+            $this->Template->setColor = $arrColor;
             $this->Template->colsetTitle = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ###';
             $this->Template->visualSet = $strMiniset;
             $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$GLOBALS['TL_LANG']['MSC']['sc_first']);
@@ -117,7 +123,7 @@ class FormColStart extends \Widget
 		 * CSS Code in das Pagelayout einfügen
 		 */
         $mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] : '';
-		$IEHacksCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] : false;
+		$IEHacksCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] ?? false;
 		
 		$GLOBALS['TL_CSS']['subcolumns'] = $mainCSS;
 		$GLOBALS['TL_HEAD']['subcolumns'] = $IEHacksCSS ? '<!--[if lte IE 7]><link href="'.$IEHacksCSS.'" rel="stylesheet" type="text/css" /><![endif]--> ' : '';
@@ -153,7 +159,7 @@ class FormColStart extends \Widget
 		
 		#$container = unserialize($this->sc_container);
 		$objTemplate->column = $container[0][0] . ' col_1' . ' first';
-		$objTemplate->inside = $container[0][1];
+		$objTemplate->inside = $container[0][1] ?? '';
 		$objTemplate->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 		$objTemplate->scclass = ($this->fsc_equalize ? 'equalize ' : '') . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . count($container) . ' ' . $this->strSet . ' col-' . $this->fsc_type . ($this->class ? ' ' . $this->class : '');
 		return $objTemplate->parse();

@@ -85,6 +85,12 @@ class FormColPart extends \Widget
 
             $arrColor = unserialize($this->fsc_color);
 
+            if(count($arrColor) === 2 && empty($arrColor[1])) {
+                $arrColor = '';
+            } else {
+                $arrColor  = $this->compileColor($arrColor);
+            }
+
             if(!$GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'])
             {
                 $this->Template = new \BackendTemplate('be_subcolumns');
@@ -117,7 +123,7 @@ class FormColPart extends \Widget
             $strMiniset .= '</div>';
 
             $this->Template = new \BackendTemplate('be_subcolumns');
-            $this->Template->setColor = $this->compileColor($arrColor);
+            $this->Template->setColor = $arrColor;
             $this->Template->colsetTitle = '### COLUMNSET START '.$this->fsc_type.' <strong>'.$this->fsc_name.'</strong> ###';
             $this->Template->visualSet = $strMiniset;
             $this->Template->hint = sprintf($GLOBALS['TL_LANG']['MSC']['contentAfter'],$colID);
@@ -187,7 +193,7 @@ class FormColPart extends \Widget
 		}
 		
 		$objTemplate->column = $container[$this->fsc_sortid][0] . ' col_' . ($this->fsc_sortid+1) . (($this->fsc_sortid == count($container)-1) ? ' last' : '');
-		$objTemplate->inside = $container[$this->fsc_sortid][1];
+		$objTemplate->inside = $container[$this->fsc_sortid][1] ?? '';
 		$objTemplate->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
 
 		return $objTemplate->parse();

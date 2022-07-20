@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.1] - 2022-07-12
+- Fix: php 8 warnings in colset
+
 ## [4.0.0] - 2022-07-12
 - Changed: throw more informative exception if column set type or colum row type not exist
 - Changed: raised php version dependency
