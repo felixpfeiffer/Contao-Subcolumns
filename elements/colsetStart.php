@@ -123,11 +123,15 @@ class colsetStart extends ContentElement
 		/**
 		 * CSS Code in das Pagelayout einfügen
 		 */
-		$mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] : false;
-		$IEHacksCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] ? $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] : false;
+		$mainCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['css'] ?? false;
+		$IEHacksCSS = $GLOBALS['TL_SUBCL'][$this->strSet]['files']['ie'] ?? false;
 
-        if($mainCSS) $GLOBALS['TL_CSS']['subcolumns'] = $mainCSS;
-		if($IEHacksCSS) $GLOBALS['TL_HEAD']['subcolumns'] = '<!--[if lte IE 7]><link href="'.$IEHacksCSS.'" rel="stylesheet" type="text/css" /><![endif]--> ';
+        if ($mainCSS) {
+            $GLOBALS['TL_CSS']['subcolumns'] = $mainCSS;
+        }
+        if ($IEHacksCSS) {
+            $GLOBALS['TL_HEAD']['subcolumns'] = '<!--[if lte IE 7]><link href="' . $IEHacksCSS . '" rel="stylesheet" type="text/css" /><![endif]--> ';
+        }
 
         if (!isset($GLOBALS['TL_SUBCL'][$this->strSet]['sets'][$this->sc_type])) {
             throw new \Exception("The requested column type could not be found. ".$this->sc_type." was requested, but no such type is defined in ".$this->strSet.".");
