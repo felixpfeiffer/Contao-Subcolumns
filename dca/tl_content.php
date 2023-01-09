@@ -641,7 +641,7 @@ class tl_content_sc extends tl_content
 			if($dc->activeRecord->type == 'colsetStart')
 			{
 				$this->Database->prepare("UPDATE tl_content %s WHERE id=?")
-							->set(array('sc_parent'=>'','sc_childs'=>''))
+							->set(array('sc_parent'=>0,'sc_childs'=>''))
 							->execute($intId);
 			}
 		}

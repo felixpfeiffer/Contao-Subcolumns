@@ -135,25 +135,26 @@ class tl_subcolumnsCallback extends Backend
 				$sc_parent = $objColstarts->id;
 				$parent = $objColstarts->id;
 				$oldChilds = unserialize($objColstarts->sc_childs);
-				$oldChildParent = $this->Database->prepare("SELECT sc_parent FROM tl_content WHERE id=?")
-											    ->limit(1)
-												->execute($oldChilds[0]);
-				
-				$newChilds = $this->Database->prepare("SELECT id,type FROM tl_content WHERE pid=? AND sc_parent=? AND type != 'colsetStart'")
-												->execute($pid,$oldChildParent->sc_parent);
-				$i=1;
-				while($newChilds->next())
-				{
-					$childs[$parent]['sc_childs'][] = $newChilds->id;
-					$parents[$newChilds->id]['sc_parent'] = $parent;
-					$parents[$newChilds->id]['sc_name'] = $sc_name . ($newChilds->type=="colsetPart" ? '-Part-' . $i : '-End');
-					$parents[$newChilds->id]['sc_sortid'] = $i;
-					$i++;
-				}
-				$childs[$parent]['sc_parent'] = $sc_parent;
-				$childs[$parent]['sc_name'] = $sc_name;
-				sort($childs[$parent]['sc_childs']);
-				
+				if (is_array($oldChilds)) {
+                    			$oldChildParent = $this->Database->prepare("SELECT sc_parent FROM tl_content WHERE id=?")
+                        			->limit(1)
+                        			->execute($oldChilds[0]['id']);
+	
+        			        $newChilds = $this->Database->prepare("SELECT id,type FROM tl_content WHERE pid=? AND sc_parent=? AND type != 'colsetStart'")
+                        			->execute($pid,$oldChildParent->sc_parent);
+                    			$i=1;
+                    			while($newChilds->next())
+                    			{
+                        			$childs[$parent]['sc_childs'][] = $newChilds->id;
+                        			$parents[$newChilds->id]['sc_parent'] = $parent;
+                        			$parents[$newChilds->id]['sc_name'] = $sc_name . ($newChilds->type=="colsetPart" ? '-Part-' . $i : '-End');
+                        			$parents[$newChilds->id]['sc_sortid'] = $i;
+                        			$i++;
+                    			}
+                    			$childs[$parent]['sc_parent'] = $sc_parent;
+                    			$childs[$parent]['sc_name'] = $sc_name;
+                    			sort($childs[$parent]['sc_childs']);
+                		}
 			}
 			
 			foreach($childs as $key=>$child)
