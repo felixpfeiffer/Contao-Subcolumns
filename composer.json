@@ -3,18 +3,22 @@
 	"description":"Subcolumns to seperate an article in several columns",
 	"keywords":["columns","yaml","grid","subcolumns"],
 	"type":"contao-module",
-	"homepage":"http://www.felixpfeiffer.com/",
 	"license":"LGPL-3.0-or-later",
 	"authors":[
 		{
 			"name":"Felix Pfeiffer",
 			"homepage":"http://www.felixpfeiffer.com/",
 			"role":"Developer"
+		},
+		{
+			"name": "Heimrich & Hannot",
+			"homepage": "https://www.heimrich-hannot.de",
+			"role": "Developer"
 		}
 	],
 	"support":{
-		"issues":"https://github.com/felixpfeiffer/Contao-Subcolumns/issues",
-		"source":"https://github.com/felixpfeiffer/Contao-Subcolumns/"
+		"issues":"https://github.com/heimrichhannot/contao-subcolumns/issues",
+		"source":"https://github.com/heimrichhannot/contao-subcolumns"
 	},
 	"require":{
 		"php":"^7.1 || ^8.0",
