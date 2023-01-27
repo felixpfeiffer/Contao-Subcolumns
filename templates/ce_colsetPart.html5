@@ -5,6 +5,6 @@
 	<!-- <?php echo $this->colID ?> Column //-->
 	<div class="<?php echo $this->class; ?> <?php echo $this->column; ?>"<?php echo $this->cssID; ?>>
 		<?php if($this->useInside): ?>
-		<div class="<?php echo $this->inside; ?>"<?php if ($this->gap['left'] || $this->gap['right']) : ?> style="<?php if ($this->gap['right']) : ?>padding-right:<?php echo $this->gap['right']; ?>;<?php endif; ?><?php if ($this->gap['left']) : ?>padding-left:<?php echo $this->gap['left']; ?>;<?php endif; ?>"<?php endif; ?>>
+		<div class="<?php echo $this->inside; ?>"<?php if (!empty($this->gap['left']) || !empty($this->gap['right'])): ?> style="<?php if (!empty($this->gap['right'])) : ?>padding-right:<?php echo $this->gap['right']; ?>;<?php endif; ?><?php if (!empty($this->gap['left'])) : ?>padding-left:<?php echo $this->gap['left']; ?>;<?php endif; ?>"<?php endif; ?>>
 		<?php endif; ?>
-		
+
