@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.3] - 2023-01-30
+- Fixed: error while copying articles ([#3], [@zonky2])
+
 ## [4.0.2] - 2023-01-09
 - Fixed: error while copying articles ([#2], [@Wusch])
 - Fixed: warnings in colsetStart with php 8 ([@kp-mtrame])
@@ -25,4 +28,6 @@ All notable changes to this project will be documented in this file.
 
 [@Wusch]: https://github.com/Wusch
 [@kp-mtrame]: https://github.com/kp-mtrame
+[@zonky2]: https://github.com/zonky2
+[#3]: https://github.com/heimrichhannot/contao-subcolumns/pull/3
 [#2]: https://github.com/heimrichhannot/contao-subcolumns/pull/2
