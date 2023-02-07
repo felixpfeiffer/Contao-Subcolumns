@@ -222,6 +222,10 @@ class colsetPart extends \ContentElement
      */
     protected function shortenHexColor($color)
     {
+        if (empty($color)) {
+            return '';
+        }
+
         if ($color[0] == $color[1] && $color[2] == $color[3] && $color[4] == $color[5])
         {
             return $color[0] . $color[2] . $color[4];
@@ -276,5 +280,3 @@ class colsetPart extends \ContentElement
         return $rgb;
     }
 }
-
-?>
