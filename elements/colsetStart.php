@@ -173,7 +173,9 @@ class colsetStart extends ContentElement
 		#$container = unserialize($this->sc_container);
         $this->Template->useInside = $blnUseInner;
 
-        $this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . \count($container) . ' ' . $this->strSet . ' col-' . $this->sc_type;
+        $sctype = in_array($GLOBALS['TL_CONFIG']['subcolumns'], ['bootstrap4', 'bootstrap5', 'boostrap4', 'boostrap5']) ? '' : (' col-' . $this->sc_type);
+
+        $this->Template->scclass = $equalize . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . \count($container) . ' ' . $this->strSet . $sctype . (' sc-type-' . $this->sc_type);
 		$this->Template->column = $container[0][0] . ' col_1' . ' first';
 		$this->Template->inside = $this->Template->useInside ? $container[0][1] : '';
 

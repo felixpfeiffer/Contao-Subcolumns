@@ -161,7 +161,10 @@ class FormColStart extends \Widget
 		$objTemplate->column = $container[0][0] . ' col_1' . ' first';
 		$objTemplate->inside = $container[0][1] ?? '';
 		$objTemplate->useInside = $GLOBALS['TL_SUBCL'][$this->strSet]['inside'];
-		$objTemplate->scclass = ($this->fsc_equalize ? 'equalize ' : '') . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . count($container) . ' ' . $this->strSet . ' col-' . $this->fsc_type . ($this->class ? ' ' . $this->class : '');
+
+        $fsctype = in_array($GLOBALS['TL_CONFIG']['subcolumns'], ['bootstrap4', 'bootstrap5', 'boostrap4', 'boostrap5']) ? '' : (' col-' . $this->fsc_type);
+
+		$objTemplate->scclass = ($this->fsc_equalize ? 'equalize ' : '') . $GLOBALS['TL_SUBCL'][$this->strSet]['scclass'] . ' colcount_' . count($container) . ' ' . $this->strSet . $fsctype . (' sc-type-' . $this->sc_type) . ($this->class ? ' ' . $this->class : '');
 		return $objTemplate->parse();
 	}
 
